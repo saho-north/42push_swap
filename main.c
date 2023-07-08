@@ -6,44 +6,23 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/07 16:38:31 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 00:48:42 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	is_valid_arg(int argc, const char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] == '-')
-				j++;
-			if (!ft_isdigit(*argv[i]))
-				return (false);
-			while (argv[i][j] && ft_isdigit(argv[i][j]))
-				j++;
-			if (!argv[i][j])
-				break ;
-			if (argv[i][j] != ' ')
-				return (false);
-			j++;
-		}
-		i++;
-	}
-	return (true);
-}
-
 int	main(int argc, const char **argv)
 {
+	t_list	*stack_a;
+
 	if (argc == 1 || !is_valid_arg(--argc, ++argv))
-		error();
-	stack_init(argc, argv);
+		print_error();
+	stack_a = stack_init(argc, argv);
 	return (0);
+}
+
+__attribute__((destructor)) static void destructor()
+{
+	system("leaks -q push_swap");
 }

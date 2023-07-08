@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   is_valid_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 15:10:56 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/07 16:55:44 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/09 00:02:16 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+bool	is_valid_arg(int argc, const char **argv)
 {
-	ft_putendl_fd("Error", 2);
-	exit(EXIT_FAILURE);
-}
+	int	i;
+	int	j;
 
-void	error_free_exit(t_list *ptr)
-{
-	lst_clear(&ptr);
-	ft_putendl_fd("Error", 2);
-	exit(EXIT_FAILURE);
+	i = 0;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] == ' ')
+				j++;
+			if (argv[i][j] && argv[i][j] == '-')
+				j++;
+			if (argv[i][j] && !ft_isdigit(argv[i][j]))
+				return (false);
+			while (argv[i][j] && ft_isdigit(argv[i][j]))
+				j++;
+			if (argv[i][j] && argv[i][j] != ' ')
+				return (false);
+		}
+		i++;
+	}
+	return (true);
 }

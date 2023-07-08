@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 12:37:53 by Saho Kitaha       #+#    #+#             */
-/*   Updated: 2023/06/03 22:41:36 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/07 15:10:56 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/09 00:01:07 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	print_error(void)
 {
-	unsigned char	*str;
-	unsigned char	ch;
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
 
-	str = (unsigned char *)b;
-	ch = (unsigned char)c;
-	while (len--)
-		*(str++) = ch;
-	return (b);
+void	print_error_free(t_list *ptr)
+{
+	lst_clear(&ptr);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
