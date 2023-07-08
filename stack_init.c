@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:14:05 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 01:07:33 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 02:48:26 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 t_list	*stack_init(int argc, char **argv)
 {
-	t_list		**head;
-	t_list		*node;
-	int			i;
-	int			j;
-	long long	value;
+	t_list	**head;
+	t_list	*node;
+	int		i;
+	int		j;
 
 	head = NULL;
 	i = 0;
@@ -27,15 +26,15 @@ t_list	*stack_init(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			value = ft_atol(argv[i][j]);
-			if (value < INT_MIN || INT_MAX < value)
-				print_error_free(head);
-			node = lst_new((int)value, head);
-			(*head)->prev = node;
-			(*head) = node;
-			while (argv[i][j] && (argv[i][j] == '-' || ft_isdigit(argv[i][j])))
+			node = lst_new(str_to_int(argv[i][j], head), head);
+			if (argv[i][j] == ' ')
+				j++;
+			if (argv[i][j] && argv[i][j] == '-')
+				j++;
+			while (argv[i][j] && ft_isdigit(argv[i][j]))
 				j++;
 		}
 		i++;
 	}
+	return (*head);
 }
