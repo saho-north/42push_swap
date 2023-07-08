@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 09:57:42 by Saho Kitaha       #+#    #+#             */
-/*   Updated: 2023/07/09 00:49:15 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 03:05:08 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_isdigit(int c)
 {

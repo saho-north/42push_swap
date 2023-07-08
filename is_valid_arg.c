@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 00:02:16 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 03:10:00 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ bool	is_valid_arg(int argc, const char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
+			printf("argv[%d][%d] = %c\n", i, j, argv[i][j]);
 			if (argv[i][j] == ' ')
 				j++;
 			if (argv[i][j] && argv[i][j] == '-')

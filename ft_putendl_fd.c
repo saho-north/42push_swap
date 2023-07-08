@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 00:54:57 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/06/03 22:41:00 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 03:02:29 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

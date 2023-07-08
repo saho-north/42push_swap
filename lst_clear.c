@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 03:03:19 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/07 16:55:08 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 04:01:49 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	lst_clear(t_list **lst)
 		next = tmp->next;
 		free(tmp);
 		tmp = next;
+		if (tmp->is_dummy)
+			break ;
 	}
 	*lst = NULL;
 }

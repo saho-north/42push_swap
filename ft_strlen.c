@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 12:28:08 by Saho Kitaha       #+#    #+#             */
-/*   Updated: 2023/06/02 15:28:23 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/09 03:02:36 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *str)
 {
