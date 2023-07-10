@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoll.c                                       :+:      :+:    :+:   */
+/*   ft_strtol.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 22:12:30 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/10 16:13:05 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/10 20:06:49 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/11 04:35:32 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long long	convert_num(const char *str, bool is_negative)
+static long	convert_num(const char *str, const char **endpos, bool is_negative)
 {
-	long long	ov_div;
-	long long	ov_mod;
-	long long	num;
+	long	num;
+	long	ov_div;
+	long	ov_mod;
 
-	ov_div = LLONG_MAX / 10;
-	ov_mod = LLONG_MAX % 10;
+	ov_div = LONG_MAX / 10;
+	ov_mod = LONG_MAX % 10;
 	if (is_negative)
 		ov_mod++;
 	num = 0;
@@ -28,22 +28,22 @@ static long long	convert_num(const char *str, bool is_negative)
 		if (num > ov_div || (num == ov_div && (*str - '0') > ov_mod))
 		{
 			if (!is_negative)
-				return (LLONG_MAX);
+				return (LONG_MAX);
 			else
-				return (LLONG_MIN);
+				return (LONG_MIN);
 		}
 		num = num * 10 + (*str - '0');
 		str++;
 	}
+	*endpos = str;
 	if (is_negative)
 		num *= -1;
 	return (num);
 }
 
-long long	ft_strtoll(const char *str)
+long	ft_strtol(const char *str, const char **endpos)
 {
-	long long	num;
-	bool		is_negative;
+	bool	is_negative;
 
 	is_negative = false;
 	while (*str == ' ' || ('\t' <= *str && *str <= '\r'))
@@ -54,5 +54,5 @@ long long	ft_strtoll(const char *str)
 			is_negative = true;
 		str++;
 	}
-	return (convert_num(str, is_negative));
+	return (convert_num(str, endpos, is_negative));
 }

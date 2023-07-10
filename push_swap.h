@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/10 15:32:50 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/11 05:43:11 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,29 @@
 # include <sysexits.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_nord
 {
+	struct s_nord	*next;
+	struct s_nord	*prev;
 	int				value;
-	struct s_list	*prev;
-	struct s_list	*next;
-	bool			is_sentinel;
+	bool			is_guard_nord;
 	bool			is_pivot;
-}					t_list;
+}					t_nord;
 
-bool				is_valid_arg(int argc, const char **argv);
+typedef struct s_stack
+{
+	t_nord			*guard_nord;
+	int				size;
+}					t_stack;
+
+t_stack				*parse_input(int argc, const char **argv);
+void				exit_with_print_error(void);
+void				free_stack_and_exit_with_error(t_stack *stack);
+void				free_stacks_exit_error(t_stack *stack_a, t_stack *stack_b);
+
 int					ft_isdigit(int c);
-void				exit_with_error(void);
-t_list				*build_stack(int argc, const char **argv);
-long long			ft_strtoll(const char *str);
-void				lst_clear(t_list **lst);
-t_list				*create_node(int value, t_list **head);
-void				exit_with_error_and_free(t_list *ptr);
+void				ft_putstr_fd(const char *s, int fd);
 size_t				ft_strlen(const char *str);
-void				ft_putendl_fd(char *s, int fd);
-void				ft_putstr_fd(char *s, int fd);
+long				ft_strtol(const char *str, const char **endpos);
+bool				is_valid_arg(int argc, const char **argv);
 #endif

@@ -1,22 +1,17 @@
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I.
-DEBUG		= -fsanitize=address -g
-NAME		= push_swap
-SRCS		= *.c
-OBJS 		= $(SRCS:.c=.o)
-INCS		= push_swap.h
-BONUS_SRCS	= push_swap_bonus.c \
-			  push_swap_utils_bonus.c \
-			  main.c
-BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
-BONUS_INCS	= push_swap_bonus.h
+CC       = cc
+CFLAGS   = -Wall -Wextra -Werror -I.
+DEBUG    = -fsanitize=address -g
+NAME     = push_swap
+SRCS     = $(wildcard *.c)
+OBJS     = $(SRCS:.c=.o)
+INCS     = push_swap.h
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c $(INCS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -27,18 +22,33 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(BONUS_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+test: $(NAME)
+	./$(NAME) 2 1 3 6 5 8 7 4
+	./$(NAME) 0 1 2 3 4 5 6 7 8 9
+	./$(NAME) 1 5 2 4 3
+	./$(NAME) "6 3 1 5 2 4"
+	./$(NAME) 1 2 3 4 5
+	./$(NAME) "1 2 3 4 5"
+	./$(NAME) "-1 -2 -3 -4 -5"
+	./$(NAME) "1 2 3" 4 5
+	./$(NAME) "1 2" "3 4" "5"
 
-test:
-	cc *.c -o push_swap
-	./push_swap 2 1 3 6 5 8 7 4
-	#./push_swap 0 one 2 3
-	#./push_swap 0 1 2 3 4 5 6 7 8 9
-	#./push_swap 0 1 2 3 4 5 6 7 8 9 10
+error0: $(NAME)
+	./$(NAME) "1 2 3 "
 
-test_bonus: $(BONUS_OBJS)
-	$(CC) $(CFLAGS)  $^ -o a.out
-	./a.out
+error1: $(NAME)
+	./$(NAME) " 1 2 3"
 
-.PHONY: all clean fclean re bonus test
+error2: $(NAME)
+	./$(NAME) "1- 2 3"
+
+error3: $(NAME)
+	./$(NAME) "1 -2- 3"
+
+error4: $(NAME)
+	./$(NAME) "- 1 2 3"
+
+error5: $(NAME)
+	./$(NAME) "1 2 3-"
+
+.PHONY: all clean fclean re test error0 error1 error2 error3 error4 error5

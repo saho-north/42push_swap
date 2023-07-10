@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/10 16:44:21 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/11 05:36:05 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ bool	is_valid_arg(int argc, const char **argv)
 			return (false);
 		while (*str)
 		{
-			if (*str == ' ')
+			if (*str == '-')
 				str++;
-			if (*str && *str == '-')
-				str++;
-			if (*str && !ft_isdigit(*str))
+			if (!*str || !ft_isdigit(*str))
 				return (false);
 			while (*str && ft_isdigit(*str))
 				str++;
-			if (*str && *str != ' ')
+			if (!*str)
+				break ;
+			if (*str != ' ' || (!ft_isdigit(*(str + 1)) && *(str + 1) != '-'))
 				return (false);
+			str++;
 		}
 		argv++;
 	}
