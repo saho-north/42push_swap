@@ -31,29 +31,22 @@ t_list	*build_stack(int argc, const char **argv)
 	t_list		*sentinel;
 	t_list		*node;
 	int			i;
-	int			j;
 	long long	num;
 
 	sentinel = create_sentinel();
 	i = 0;
 	while (i < argc)
 	{
-		j = 0;
 		while (argv[i][j])
 		{
 			num = ft_strtoll(&argv[i][j]);
 			if (num < INT_MIN || INT_MAX < num)
-			{
-				lst_clear(&sentinel);
-				exit_with_error();
-			}
-			node = new_node(num, &sentinel);
+				exit_with_error_and_free(sentinel);
+			node = create_node(num, &sentinel);
 			printf("node->value = %d\n", node->value);
 			if (argv[i][j] == ' ')
 				j++;
-			if (argv[i][j] && argv[i][j] == '-')
-				j++;
-			while (argv[i][j] && ft_isdigit(argv[i][j]))
+			while (argv[i][j] && (argv[i][j] == '-' || ft_isdigit(argv[i][j])))
 				j++;
 		}
 		i++;

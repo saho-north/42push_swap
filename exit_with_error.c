@@ -21,6 +21,5 @@ void	exit_with_error(void)
 void	exit_with_error_and_free(t_list *ptr)
 {
 	lst_clear(&ptr);
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
+	exit_with_error();
 }

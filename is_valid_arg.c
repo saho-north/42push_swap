@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 03:10:00 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:44:21 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 bool	is_valid_arg(int argc, const char **argv)
 {
-	int	i;
-	int	j;
+	const char	*str;
 
-	i = 0;
-	while (i < argc)
+	while (argc--)
 	{
-		j = 0;
-		while (argv[i][j])
+		str = *argv;
+		if (!ft_strlen(str))
+			return (false);
+		while (*str)
 		{
-			printf("argv[%d][%d] = %c\n", i, j, argv[i][j]);
-			if (argv[i][j] == ' ')
-				j++;
-			if (argv[i][j] && argv[i][j] == '-')
-				j++;
-			if (argv[i][j] && !ft_isdigit(argv[i][j]))
+			if (*str == ' ')
+				str++;
+			if (*str && *str == '-')
+				str++;
+			if (*str && !ft_isdigit(*str))
 				return (false);
-			while (argv[i][j] && ft_isdigit(argv[i][j]))
-				j++;
-			if (argv[i][j] && argv[i][j] != ' ')
+			while (*str && ft_isdigit(*str))
+				str++;
+			if (*str && *str != ' ')
 				return (false);
 		}
-		i++;
+		argv++;
 	}
 	return (true);
 }

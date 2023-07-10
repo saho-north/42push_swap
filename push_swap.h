@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/10 15:26:14 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:32:50 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void				exit_with_error(void);
 t_list				*build_stack(int argc, const char **argv);
 long long			ft_strtoll(const char *str);
 void				lst_clear(t_list **lst);
-t_list				*new_node(int value, t_list **head);
-
+t_list				*create_node(int value, t_list **head);
+void				exit_with_error_and_free(t_list *ptr);
 size_t				ft_strlen(const char *str);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putstr_fd(char *s, int fd);
