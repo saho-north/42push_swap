@@ -12,14 +12,26 @@
 
 #include "push_swap.h"
 
-void	exit_with_error(void)
+void	print_error(void)
 {
 	write(2, "Error\n", 6);
+}
+
+void	exit_with_error(void)
+{
+	print_error();
 	exit(EXIT_FAILURE);
 }
 
-void	exit_with_error_and_free(t_list *ptr)
+void	free_list_and_exit_with_error(t_list *lst)
 {
-	lst_clear(&ptr);
+	free_doubly_linked_list(&lst);
+	exit_with_error();
+}
+
+void	free_lists_and_exit_with_error(t_list *lst1, t_list *lst2)
+{
+	free_doubly_linked_list(&lst1);
+	free_doubly_linked_list(&lst2);
 	exit_with_error();
 }
