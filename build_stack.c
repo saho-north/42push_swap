@@ -1,46 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   build_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:14:05 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 03:58:36 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/10 13:33:40 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*create_dummy(void)
+t_list	*create_sentinel(void)
 {
-	t_list	*dummy;
+	t_list	*sentinel;
 
-	dummy = (t_list *)malloc(sizeof(t_list));
-	if (!dummy)
-		print_error();
-	dummy->next = dummy;
-	dummy->prev = dummy;
-	dummy->value = 0;
-	dummy->is_dummy = true;
-	return (dummy);
+	sentinel = (t_list *)malloc(sizeof(t_list));
+	if (!sentinel)
+		exit_with_error();
+	sentinel->next = sentinel;
+	sentinel->prev = sentinel;
+	sentinel->value = 0;
+	sentinel->is_sentinel = true;
+	return (sentinel);
 }
 
-t_list	*stack_init(int argc, const char **argv)
+t_list	*build_stack(int argc, const char **argv)
 {
-	t_list	*dummy;
-	t_list	*node;
-	int		i;
-	int		j;
+	t_list		*sentinel;
+	t_list		*node;
+	int			i;
+	int			j;
+	long long	num;
 
-	dummy = create_dummy();
+	sentinel = create_sentinel();
 	i = 0;
 	while (i < argc)
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			node = lst_new(str_to_int(&argv[i][j], &dummy), &dummy);
+			num = ft_strtoll(&argv[i][j]);
+			if (num < INT_MIN || INT_MAX < num)
+			{
+				lst_clear(&sentinel);
+				exit_with_error();
+			}
+			node = new_node(num, &sentinel);
 			printf("node->value = %d\n", node->value);
 			if (argv[i][j] == ' ')
 				j++;
@@ -51,6 +58,6 @@ t_list	*stack_init(int argc, const char **argv)
 		}
 		i++;
 	}
-	printf("dummy->next->value = %d\n", dummy->next->value);
-	return (dummy);
+	printf("sentinel->next->value = %d\n", sentinel->next->value);
+	return (sentinel);
 }

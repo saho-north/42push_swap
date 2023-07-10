@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_to_int.c                                       :+:      :+:    :+:   */
+/*   ft_strtoll.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 22:12:30 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 03:04:07 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:26:57 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static long long	convert_num(const char *str, bool is_negative)
 	return (num);
 }
 
-int	str_to_int(const char *str, t_list **head)
+long long	ft_strtoll(const char *str)
 {
 	long long	num;
 	bool		is_negative;
@@ -53,11 +53,5 @@ int	str_to_int(const char *str, t_list **head)
 		is_negative = true;
 		str++;
 	}
-	num = convert_num(str, is_negative);
-	if (num < INT_MIN || INT_MAX < num)
-	{
-		lst_clear(head);
-		print_error();
-	}
-	return ((int)num);
+	return (convert_num(str, is_negative));
 }

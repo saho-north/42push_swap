@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/09 04:01:20 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:50:04 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	main(int argc, const char **argv)
 	t_list	*stack_a;
 
 	if (argc == 1 || !is_valid_arg(--argc, ++argv))
-		print_error();
-	stack_a = stack_init(argc, argv);
+		exit_with_error();
+	stack_a = build_stack(argc, argv);
 	if (!stack_a)
-		print_error();
+		exit_with_error();
 	print_stack(stack_a);
 	lst_clear(&stack_a);
 	return (0);
