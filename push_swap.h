@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/11 05:46:34 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/11 07:45:19 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ typedef struct s_stack
 	t_nord			*guard_nord;
 	int				size;
 }					t_stack;
-
+void				print_stack(t_nord *guard_nord);
 t_stack				*parse_input(int argc, const char **argv);
+
 void				exit_with_print_error(void);
-void				free_stack_and_exit_with_error(t_stack *stack);
-void				free_stacks_exit_error(t_stack *stack_a, t_stack *stack_b);
+void				free_stack(t_stack *stack);
+void				free_stack_with_error(t_stack *stack);
+void				free_stacks_with_error(t_stack *stack_a, t_stack *stack_b);
 
 int					ft_isdigit(int c);
 void				ft_putstr_fd(const char *s, int fd);

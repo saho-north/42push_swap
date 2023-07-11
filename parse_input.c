@@ -18,7 +18,7 @@ static void	add_new_node(int num, t_stack *stack)
 
 	node = (t_nord *)malloc(sizeof(t_nord));
 	if (!node)
-		free_stack_and_exit_with_error(stack);
+		free_stack_with_error(stack);
 	node->next = stack->guard_nord;
 	node->prev = stack->guard_nord->prev;
 	stack->guard_nord->prev->next = node;
@@ -76,7 +76,7 @@ t_stack	*parse_input(int argc, const char **argv)
 		{
 			num = ft_strtol(str, &endpos);
 			if (num < INT_MIN || INT_MAX < num)
-				free_stack_and_exit_with_error(stack);
+				free_stack_with_error(stack);
 			add_new_node(num, stack);
 			str = endpos;
 		}

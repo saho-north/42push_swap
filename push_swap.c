@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/11 05:40:35 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/12 01:17:32 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	print_stack(t_nord *guard_nord)
 {
-	t_nord	*ptr;
+	t_nord	*node;
 
-	ptr = guard_nord;
-	if (guard_nord == NULL)
-	{
+	if (!guard_nord)
 		return ;
-	}
-	while (ptr->next != guard_nord)
+	node = guard_nord->next;
+	while (node && node != guard_nord)
 	{
-		printf("%d ", ptr->value);
-		ptr = ptr->next;
+		printf("%d ", node->value);
+		node = node->next;
 	}
-	printf("guard_nord: %d\n", ptr->value);
+	printf("\nguard_nord: %d\n\n\n", node->value);
 }
 
 int	main(int argc, const char **argv)
@@ -41,8 +39,8 @@ int	main(int argc, const char **argv)
 	stack_a = parse_input(argc, argv);
 	if (!stack_a)
 		exit_with_print_error();
-	//print_stack(stack_a->guard_nord);
-	free_stack_and_exit_with_error(stack_a);
+	print_stack(stack_a->guard_nord);
+	free_stack(stack_a);
 	return (0);
 }
 

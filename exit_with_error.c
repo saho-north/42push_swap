@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:03:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/11 04:42:50 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/11 07:43:15 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,21 @@ void	exit_with_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	free_stack_and_exit_with_error(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
 	free_doubly_linked_list(stack->guard_nord);
 	free(stack);
+}
+
+void	free_stack_with_error(t_stack *stack)
+{
+	free_stack(stack);
 	exit_with_print_error();
 }
 
-void	free_stacks_exit_error(t_stack *stack_a, t_stack *stack_b)
+void	free_stacks_with_error(t_stack *stack_a, t_stack *stack_b)
 {
-	free_doubly_linked_list(stack_a->guard_nord);
-	free_doubly_linked_list(stack_b->guard_nord);
-	free(stack_a);
-	free(stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	exit_with_print_error();
 }
