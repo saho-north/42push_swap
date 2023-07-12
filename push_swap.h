@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/11 07:45:19 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:23:37 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				free_stack_with_error(t_stack *stack);
 void				free_stacks_with_error(t_stack *stack_a, t_stack *stack_b);
 
 int					ft_isdigit(int c);
-void				ft_putstr_fd(const char *s, int fd);
+void				ft_putendl_fd(char *s, int fd);
 size_t				ft_strlen(const char *str);
 long				ft_strtol(const char *str, const char **endpos);
 bool				is_valid_arg(int argc, const char **argv);

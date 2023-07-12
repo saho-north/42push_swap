@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:03:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/11 07:43:15 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:21:57 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	free_doubly_linked_list(t_nord *guard_nord)
 
 void	exit_with_print_error(void)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putendl_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
 

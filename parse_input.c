@@ -61,6 +61,19 @@ static t_stack	*create_empty_stack(void)
 	return (stack);
 }
 
+static void	check_if_duplicate(int num, t_stack *stack)
+{
+	t_nord	*node;
+
+	node = stack->guard_nord->next;
+	while (node && node != stack->guard_nord)
+	{
+		if (node->value == num)
+			free_stack_with_error(stack);
+		node = node->next;
+	}
+}
+
 t_stack	*parse_input(int argc, const char **argv)
 {
 	t_stack		*stack;
@@ -77,7 +90,8 @@ t_stack	*parse_input(int argc, const char **argv)
 			num = ft_strtol(str, &endpos);
 			if (num < INT_MIN || INT_MAX < num)
 				free_stack_with_error(stack);
-			add_new_node(num, stack);
+			check_if_duplicate((int)num, stack);
+			add_new_node((int)num, stack);
 			str = endpos;
 		}
 		argv++;
