@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 00:54:57 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/12 21:18:30 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 18:45:18 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/12 21:20:49 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_issign(int c)
 {
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	return (c == '+' || c == '-');
 }

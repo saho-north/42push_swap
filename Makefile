@@ -22,7 +22,7 @@ fclean: clean
 
 re: fclean all
 
-test: $(NAME)
+test: $(NAME) clean
 	./$(NAME) 2 1 3 6 5 8 7 4
 	./$(NAME) 0 1 2 3 4 5 6 7 8 9
 	./$(NAME) 1 5 2 4 3
@@ -32,6 +32,7 @@ test: $(NAME)
 	./$(NAME) "-1 -2 -3 -4 -5"
 	./$(NAME) "1 2 3" 4 5
 	./$(NAME) "1 2" "3 4" "5"
+	./$(NAME) 1 3 5 +9 20 -4 50 60 04 08
 
 error0: $(NAME)
 	./$(NAME) "1 2 3 "

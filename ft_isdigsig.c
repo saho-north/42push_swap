@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isdigsig.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 00:54:57 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/12 21:18:30 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 19:04:56 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/12 21:18:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_isdigsig(int c)
 {
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	return (ft_isdigit(c) || ft_issign(c));
 }
