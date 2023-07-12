@@ -6,13 +6,13 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/12 19:21:13 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:54:01 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	add_new_node(int num, t_stack *stack)
+void	push_nord_to_stack(int num, t_stack *stack)
 {
 	t_nord	*node;
 
@@ -29,7 +29,7 @@ static void	add_new_node(int num, t_stack *stack)
 	stack->size++;
 }
 
-static t_nord	*create_guard_nord(void)
+t_nord	*create_guard_nord(void)
 {
 	t_nord	*guard_nord;
 
@@ -44,7 +44,7 @@ static t_nord	*create_guard_nord(void)
 	return (guard_nord);
 }
 
-static t_stack	*create_empty_stack(void)
+t_stack	*create_empty_stack(void)
 {
 	t_stack	*stack;
 
@@ -91,7 +91,7 @@ t_stack	*parse_input(int argc, const char **argv)
 			if (num < INT_MIN || INT_MAX < num)
 				free_stack_with_error(stack);
 			check_if_duplicate((int)num, stack);
-			add_new_node((int)num, stack);
+			push_nord_to_stack((int)num, stack);
 			str = endpos;
 		}
 		argv++;

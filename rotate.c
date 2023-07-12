@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 22:58:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/12 23:17:20 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:27:30 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	rotate(t_stack *stack)
 	guard_nord->prev = first_node;
 	first_node->next = guard_nord;
 	first_node->prev = last_node;
-	second_node->prev = guard_nord;
 	last_node->next = first_node;
+	second_node->prev = guard_nord;
 }
 
 void	ra(t_stack *stack_a)

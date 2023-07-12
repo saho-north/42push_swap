@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 00:09:20 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 23:35:22 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/13 00:11:57 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, const char **argv)
+void	print_stack(t_stack *stack)
 {
-	t_stack	*stack_a;
+	t_nord	*current;
 
-	if (argc == 1 || !is_valid_arg(--argc, ++argv))
-		exit_with_print_error();
-	stack_a = parse_input(argc, argv);
-	if (!stack_a)
-		exit_with_print_error();
-	print_stack(stack_a);
-	free_stack(stack_a);
-	return (0);
-}
-
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q push_swap");
+	current = stack->guard_nord->next;
+	while (current != stack->guard_nord)
+	{
+		printf("%d ", current->value);
+		current = current->next;
+	}
+	printf("\n----------------------------\n");
 }
