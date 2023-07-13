@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/12 23:36:39 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:57:55 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ The last element becomes the first one.
 rrr : rra and rrb at the same time.
 */
 
-void	reverse_rotate(t_stack *stack)
+static void	reverse_rotate(t_stack *stack)
 {
 	t_nord	*guard_nord;
 	t_nord	*first_node;

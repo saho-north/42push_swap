@@ -6,11 +6,13 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:35:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 00:11:57 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:54:06 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//確認用。後で消す
 
 void	print_stack(t_stack *stack)
 {
