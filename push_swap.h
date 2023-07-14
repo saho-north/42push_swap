@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 18:14:35 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:34:31 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ typedef struct s_stack
 {
 	t_nord			*guard_nord;
 	int				size;
-	int				min;
-	int				max;
-	int				median;
 	bool			is_sorted;
 	bool			is_reverse_sorted;
 	bool			is_sorted_except_top;

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 15:48:16 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 00:35:00 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, const char **argv)
 	stack_b = create_empty_stack();
 	if (!stack_b)
 		free_stack_with_error(stack_a);
+	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	return (0);
 }

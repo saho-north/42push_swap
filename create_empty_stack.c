@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:46:06 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 15:48:10 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/14 00:02:55 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,10 @@ t_stack	*create_empty_stack(void)
 		exit_with_print_error();
 	}
 	stack->size = 0;
+	stack->is_sorted = false;
+	stack->is_reverse_sorted = false;
+	stack->is_sorted_except_top = false;
+	stack->is_sorted_except_bottom = false;
+	stack->is_sorted_except_top_and_bottom = false;
 	return (stack);
 }
