@@ -62,3 +62,6 @@ test
 test.c
 out
 test*.c
+push_swap_tester
+checker
+bin.c

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/14 00:34:31 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 04:03:57 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ long				ft_strtol(const char *str, const char **endpos);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
+void				sort(t_stack *stack_a, t_stack *stack_b);
+void				sort_three_a(t_stack *stack_a);
+void				sort_six_or_less(t_stack *stack_a, t_stack *stack_b);
+void				quicksort(t_stack *stack_a, t_stack *stack_b);
 
 void				sa(t_stack *stack_a);
 void				sb(t_stack *stack_b);
@@ -70,5 +74,13 @@ void				rr(t_stack *stack_a, t_stack *stack_b);
 void				rra(t_stack *stack_a);
 void				rrb(t_stack *stack_b);
 void				rrr(t_stack *stack_a, t_stack *stack_b);
+
+void				sort_three_a(t_stack *stack_a);
+bool				is_sorted(t_stack *stack);
+void				sort_six_or_less(t_stack *stack_a, t_stack *stack_b);
+void				sort(t_stack *stack_a, t_stack *stack_b);
+
+// to be deleted later on
+void				print_stack(t_stack *stack);
 
 #endif
