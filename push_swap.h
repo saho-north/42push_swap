@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 13:20:25 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 14:41:50 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
 void				sort(t_stack *stack_a, t_stack *stack_b);
-void				sort_three_a(t_stack *stack_a);
-void				sort_six_or_less(t_stack *stack_a, t_stack *stack_b);
+void				merge_sort(t_stack *stack_a, t_stack *stack_b);
 void				quicksort(t_stack *stack_a, t_stack *stack_b);
 
 void				sa(t_stack *stack_a);

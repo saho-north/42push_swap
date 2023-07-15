@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 05:28:21 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 14:41:50 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,5 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	else if (size < 7)
 		sort_six_or_less(stack_a, stack_b);
 	else
-		quicksort(stack_a, stack_b);
+		merge_sort(stack_a, stack_b);
 }
