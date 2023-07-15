@@ -24,6 +24,9 @@ re: fclean all
 
 test: $(NAME) clean
 	./$(NAME) 2 1 3 6 5 8 7 4
+
+temp: $(NAME) clean
+	./$(NAME) 2 1 3 6 5 8 7 4
 	./$(NAME) 0 1 2 3 4 5 6 7 8 9
 	./$(NAME) 1 5 2 4 3
 	./$(NAME) "6 3 1 5 2 4"

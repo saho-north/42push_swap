@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 13:21:22 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 22:39:45 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,26 @@ static void	reverse_rotate(t_stack *stack)
 	first_node->prev = last_node;
 }
 
-void	rra(t_stack *stack_a)
+void	rra(t_stack *a)
 {
-	reverse_rotate(stack_a);
+	reverse_rotate(a);
 	ft_putendl_fd("rra", 1);
-	printf("stack_a : ");
-	print_stack(stack_a);
+	printf("a : ");
+	print_stack(a);
 }
 
-void	rrb(t_stack *stack_b)
+void	rrb(t_stack *b)
 {
-	reverse_rotate(stack_b);
+	reverse_rotate(b);
 	ft_putendl_fd("rrb", 1);
-	printf("stack_b : ");
-	print_stack(stack_b);
+	printf("b : ");
+	print_stack(b);
 }
 
-void	rrr(t_stack *stack_a, t_stack *stack_b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	ft_putendl_fd("rrr", 1);
-	print_stacks(stack_a, stack_b);
+	print_stacks(a, b);
 }

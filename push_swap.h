@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 14:41:50 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 22:01:08 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,23 @@ typedef struct s_nord
 	struct s_nord	*next;
 	struct s_nord	*prev;
 	int				value;
-	bool			is_guard_nord;
-	bool			is_pivot;
 }					t_nord;
 
 typedef struct s_stack
 {
 	t_nord			*guard_nord;
 	int				size;
-	bool			is_sorted;
-	bool			is_reverse_sorted;
-	bool			is_sorted_except_top;
-	bool			is_sorted_except_bottom;
-	bool			is_sorted_except_top_and_bottom;
 }					t_stack;
 
 void				print_stack(t_stack *stack);
-void				print_stacks(t_stack *stack_a, t_stack *stack_b);
+void				print_stacks(t_stack *a, t_stack *b);
 
 t_stack				*create_empty_stack(void);
 
 void				exit_with_print_error(void);
 void				free_stack(t_stack *stack);
 void				free_stack_with_error(t_stack *stack);
-void				free_stacks_with_error(t_stack *stack_a, t_stack *stack_b);
+void				free_stacks_with_error(t_stack *a, t_stack *b);
 
 int					ft_isdigit(int c);
 int					ft_isdigsig(int c);
@@ -59,29 +52,29 @@ long				ft_strtol(const char *str, const char **endpos);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
-void				sort(t_stack *stack_a, t_stack *stack_b);
-void				merge_sort(t_stack *stack_a, t_stack *stack_b);
-void				quicksort(t_stack *stack_a, t_stack *stack_b);
+void				sort(t_stack *a, t_stack *b);
+void				merge_sort(t_stack *a, t_stack *b);
+void				quicksort(t_stack *a, t_stack *b);
 
-void				sa(t_stack *stack_a);
-void				sb(t_stack *stack_b);
-void				ss(t_stack *stack_a, t_stack *stack_b);
-void				pa(t_stack *stack_a, t_stack *stack_b);
-void				pb(t_stack *stack_a, t_stack *stack_b);
-void				ra(t_stack *stack_a);
-void				rb(t_stack *stack_b);
-void				rr(t_stack *stack_a, t_stack *stack_b);
-void				rra(t_stack *stack_a);
-void				rrb(t_stack *stack_b);
-void				rrr(t_stack *stack_a, t_stack *stack_b);
+void				sa(t_stack *a);
+void				sb(t_stack *b);
+void				ss(t_stack *a, t_stack *b);
+void				pa(t_stack *a, t_stack *b);
+void				pb(t_stack *a, t_stack *b);
+void				ra(t_stack *a);
+void				rb(t_stack *b);
+void				rr(t_stack *a, t_stack *b);
+void				rra(t_stack *a);
+void				rrb(t_stack *b);
+void				rrr(t_stack *a, t_stack *b);
 
-void				sort_three_a(t_stack *stack_a);
+void				sort_three_a(t_stack *a);
 bool				is_sorted(t_stack *stack);
-void				sort_six_or_less(t_stack *stack_a, t_stack *stack_b);
-void				sort(t_stack *stack_a, t_stack *stack_b);
+void				sort_six_or_less(t_stack *a, t_stack *b);
+void				sort(t_stack *a, t_stack *b);
 
-void				sort_three_b(t_stack *stack_b);
-void				sort_small_b(t_stack *stack_b);
+void				sort_three_b(t_stack *b);
+void				sort_small_b(t_stack *b);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);

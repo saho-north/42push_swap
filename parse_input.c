@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 23:49:20 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 22:35:26 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ static void	push_nord_to_stack(int num, t_stack *stack)
 		free_stack_with_error(stack);
 	node->next = stack->guard_nord;
 	node->prev = stack->guard_nord->prev;
+	node->value = num;
 	stack->guard_nord->prev->next = node;
 	stack->guard_nord->prev = node;
-	node->value = num;
-	node->is_guard_nord = false;
-	node->is_pivot = false;
 	stack->size++;
 }
 

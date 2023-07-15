@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 13:21:43 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 22:40:08 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,26 @@ static void	swap(t_stack *stack)
 	guard_nord->next = second_node;
 }
 
-void	sa(t_stack *stack_a)
+void	sa(t_stack *a)
 {
-	swap(stack_a);
+	swap(a);
 	ft_putendl_fd("sa", 1);
-	printf("stack_a : ");
-	print_stack(stack_a);
+	printf("a : ");
+	print_stack(a);
 }
 
-void	sb(t_stack *stack_b)
+void	sb(t_stack *b)
 {
-	swap(stack_b);
+	swap(b);
 	ft_putendl_fd("sb", 1);
-	printf("stack_b : ");
-	print_stack(stack_b);
+	printf("b : ");
+	print_stack(b);
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack *a, t_stack *b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(a);
+	swap(b);
 	ft_putendl_fd("ss", 1);
-	print_stacks(stack_a, stack_b);
+	print_stacks(a, b);
 }

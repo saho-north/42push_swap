@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:03:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/13 15:49:53 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 22:04:03 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	free_stack_with_error(t_stack *stack)
 	exit_with_print_error();
 }
 
-void	free_stacks_with_error(t_stack *stack_a, t_stack *stack_b)
+void	free_stacks_with_error(t_stack *a, t_stack *b)
 {
-	free_stack(stack_a);
-	free_stack(stack_b);
+	free_stack(a);
+	free_stack(b);
 	exit_with_print_error();
 }
