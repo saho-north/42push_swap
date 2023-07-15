@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 04:03:57 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 13:20:25 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_stack
 }					t_stack;
 
 void				print_stack(t_stack *stack);
+void				print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 t_stack				*create_empty_stack(void);
 
@@ -79,6 +80,9 @@ void				sort_three_a(t_stack *stack_a);
 bool				is_sorted(t_stack *stack);
 void				sort_six_or_less(t_stack *stack_a, t_stack *stack_b);
 void				sort(t_stack *stack_a, t_stack *stack_b);
+
+void				sort_three_b(t_stack *stack_b);
+void				sort_small_b(t_stack *stack_b);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 02:56:58 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 13:21:22 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
 	ft_putendl_fd("rrr", 1);
-	printf("stack_a : ");
-	print_stack(stack_a);
-	printf("stack_b : ");
-	print_stack(stack_b);
+	print_stacks(stack_a, stack_b);
 }

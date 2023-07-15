@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 04:02:54 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 05:28:21 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,51 @@ static int	get_min_value(t_stack *stack)
 		node = node->next;
 	}
 	return (min);
+}
+
+void	sort_three_b(t_stack *stack_b)
+{
+	t_nord	*guard_node;
+	int		first;
+	int		second;
+	int		last;
+
+	printf("sort_three_b\n");
+	guard_node = stack_b->guard_nord;
+	first = guard_node->next->value;
+	second = guard_node->next->next->value;
+	last = guard_node->prev->value;
+	while (first < second || second < last)
+	{
+		if (first < second && second > last && first < last)
+			rb(stack_b);
+		else if (first > second && second < last && first < last)
+			rrb(stack_b);
+		else
+			sb(stack_b);
+		first = guard_node->next->value;
+		second = guard_node->next->next->value;
+		last = guard_node->prev->value;
+	}
+}
+
+void	sort_small_b(t_stack *stack_b)
+{
+	t_nord	*node;
+	int		size;
+
+	printf("sort_small_b\n");
+	size = stack_b->size;
+	node = stack_b->guard_nord->next;
+	if (size == 1)
+		return ;
+	else if (size == 2)
+	{
+		if (node->value > node->next->value)
+			sb(stack_b);
+	}
+	else if (size == 3)
+		sort_three_b(stack_b);
 }
 
 void	sort_three_a(t_stack *stack_a)
@@ -75,6 +120,7 @@ void	sort_six_or_less(t_stack *stack_a, t_stack *stack_b)
 	t_nord	*guard_a;
 	int		min;
 
+	printf("sort_six_or_less\n");
 	guard_a = stack_a->guard_nord;
 	if (is_sorted(stack_a))
 		return ;
@@ -103,9 +149,13 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	node = stack_a->guard_nord->next;
 	size = stack_a->size;
 	if (size == 1)
+	{
+		printf("sort_one_a\n");
 		return ;
+	}
 	else if (size == 2)
 	{
+		printf("sort_two_a\n");
 		if (node->value > node->next->value)
 			sa(stack_a);
 	}

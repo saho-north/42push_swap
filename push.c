@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:28:36 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 02:57:24 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/15 13:20:52 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,12 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	push(stack_b, stack_a);
 	ft_putendl_fd("pa", 1);
-	printf("stack_a : ");
-	print_stack(stack_a);
-	printf("stack_b : ");
-	print_stack(stack_b);
+	print_stacks(stack_a, stack_b);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	push(stack_a, stack_b);
 	ft_putendl_fd("pb", 1);
-	printf("stack_a : ");
-	print_stack(stack_a);
-	printf("stack_b : ");
-	print_stack(stack_b);
+	print_stacks(stack_a, stack_b);
 }
