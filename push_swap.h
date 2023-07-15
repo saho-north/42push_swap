@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 22:01:08 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/16 02:05:48 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ long				ft_strtol(const char *str, const char **endpos);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
-void				sort(t_stack *a, t_stack *b);
-void				merge_sort(t_stack *a, t_stack *b);
-void				quicksort(t_stack *a, t_stack *b);
 
 void				sa(t_stack *a);
 void				sb(t_stack *b);
@@ -68,13 +65,12 @@ void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
-void				sort_three_a(t_stack *a);
-bool				is_sorted(t_stack *stack);
-void				sort_six_or_less(t_stack *a, t_stack *b);
 void				sort(t_stack *a, t_stack *b);
-
+void				sort_six_or_less(t_stack *a, t_stack *b);
+void				sort_three_a(t_stack *a);
 void				sort_three_b(t_stack *b);
 void				sort_small_b(t_stack *b);
+void				quicksort(t_stack *a, t_stack *b);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);
