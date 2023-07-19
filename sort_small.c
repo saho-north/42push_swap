@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/19 21:20:24 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 02:04:29 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	sort_three_b(t_stack *b)
 	int		second;
 	int		last;
 
-	printf("sort_three_b\n");
 	guard = b->guard;
 	first = guard->next->value;
 	second = guard->next->next->value;
@@ -41,7 +40,6 @@ static void	sort_three_a(t_stack *a)
 	int		second;
 	int		last;
 
-	printf("sort_three_a\n");
 	guard = a->guard;
 	first = guard->next->value;
 	second = guard->next->next->value;
@@ -77,7 +75,6 @@ static void	sort_six_or_less(t_stack *a, t_stack *b)
 	t_node	*guard_a;
 	int		min;
 
-	printf("sort_six_or_less\n");
 	guard_a = a->guard;
 	while (a->size != 3)
 	{

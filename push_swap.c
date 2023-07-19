@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/19 22:07:01 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 02:12:05 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,4 @@ int	main(int argc, const char **argv)
 	free_stack(a);
 	free_stack(b);
 	return (0);
-}
-
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q push_swap");
 }

@@ -21,18 +21,28 @@ static bool	is_sorted(t_stack *stack)
 static int	get_pivot(t_stack *stack)
 {
 	t_node	*node;
-	int		size;
-	int		i;
+	int		count_to_middle;
+	int		first;
+	int		middle;
+	int		last;
 
 	node = stack->guard->next;
-	size = stack->size;
-	i = 0;
-	while (i < size / 2)
-	{
+	count_to_middle = stack->size / 2;
+	while (count_to_middle--)
 		node = node->next;
-		i++;
-	}
-	return (node->value);
+	first = stack->guard->next->value;
+	middle = node->value;
+	last = stack->guard->prev->value;
+	if (first < middle && middle < last)
+		return (middle);
+	else if (last < middle && middle < first)
+		return (middle);
+	else if (first < last && last < middle)
+		return (last);
+	else if (middle < last && last < first)
+		return (last);
+	else
+		return (first);
 }
 
 /*
@@ -43,7 +53,6 @@ void	push_sorted_nodes(t_stack *a, t_stack *b)
 {
 	t_node	*guard;
 
-	printf("push_sorted_nodes\n");
 	guard = b->guard;
 	sort_small(b, a, STACK_B);
 	while (b->size > 0)
@@ -87,12 +96,11 @@ void	partition(t_stack *a, t_stack *b)
 	}
 	size = b->size;
 	pivot = get_pivot(b);
-	printf("pivot: %d\n", pivot);
 	tmp_in_a = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (b->guard->next->value <= pivot)
+		if (b->guard->next->value < pivot)
 			rb(b);
 		else
 		{
@@ -108,25 +116,15 @@ void	partition_and_refill(t_stack *a, t_stack *b, int tmp_in_a)
 {
 	if (b->size > 0)
 	{
-		printf("\n>>> partition\n");
-		print_stacks(a, b);
 		partition(a, b);
-		printf("<<< after partition\n");
-		print_stacks(a, b);
 	}
 	if (tmp_in_a > 0)
 	{
-		printf("\n>>> refil\n");
-		printf("tmp_in_a: %d\n", tmp_in_a);
-		print_stacks(a, b);
-		printf("<<< after refil\n");
-		print_stacks(a, b);
 		refil_stack(a, b, tmp_in_a);
-		printf("\n>>> partition\n");
-		print_stacks(a, b);
+	}
+	if (b->size > 0)
+	{
 		partition(a, b);
-		printf("<<< after partition\n");
-		print_stacks(a, b);
 	}
 }
 
@@ -141,12 +139,9 @@ void	initial_partition(t_stack *a, t_stack *b)
 	int		pivot;
 	int		i;
 
-	printf("\n>>> initial partition\n");
-	print_stacks(a, b);
 	guard = a->guard;
 	size = a->size;
 	pivot = get_pivot(a);
-	printf("pivot: %d\n", pivot);
 	i = 0;
 	while (i < size)
 	{
@@ -156,8 +151,6 @@ void	initial_partition(t_stack *a, t_stack *b)
 			ra(a);
 		i++;
 	}
-	printf("<<< after initial partition\n");
-	print_stacks(a, b);
 	partition_and_refill(a, b, a->size);
 }
 
@@ -166,7 +159,6 @@ void	sort(t_stack *a, t_stack *b)
 	int	size;
 
 	size = a->size;
-	print_stacks(a, b);
 	if (b->size == 0 && is_sorted(a))
 		return ;
 	if (size < 7)
@@ -175,5 +167,4 @@ void	sort(t_stack *a, t_stack *b)
 	}
 	else
 		initial_partition(a, b);
-	print_stacks(a, b);
 }
