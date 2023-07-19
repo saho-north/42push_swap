@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/19 14:10:14 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:27:28 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,12 @@ void	sa(t_stack *a)
 {
 	swap(a);
 	ft_putendl_fd("sa", 1);
-	printf("a : ");
-	print_stack(a);
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
 	ft_putendl_fd("sb", 1);
-	printf("b : ");
-	print_stack(b);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -60,5 +56,4 @@ void	ss(t_stack *a, t_stack *b)
 	swap(a);
 	swap(b);
 	ft_putendl_fd("ss", 1);
-	print_stacks(a, b);
 }

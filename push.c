@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:28:36 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/19 14:10:14 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:25:31 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ void	pa(t_stack *a, t_stack *b)
 {
 	push(b, a);
 	ft_putendl_fd("pa", 1);
-	print_stacks(a, b);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
 	ft_putendl_fd("pb", 1);
-	print_stacks(a, b);
 }
