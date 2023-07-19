@@ -6,112 +6,64 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/16 03:25:44 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:20:24 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// b側のソートは後で逆順に改善する必要があるかもしれない？
-
-void	sort_three_b(t_stack *b)
+static void	sort_three_b(t_stack *b)
 {
-	t_nord	*guard_node;
+	t_node	*guard;
 	int		first;
 	int		second;
 	int		last;
 
 	printf("sort_three_b\n");
-	guard_node = b->guard_nord;
-	first = guard_node->next->value;
-	second = guard_node->next->next->value;
-	last = guard_node->prev->value;
-	while (first < second || second < last)
-	{
-		if (first < second && second > last && first < last)
-			rb(b);
-		else if (first > second && second < last && first < last)
-			rrb(b);
-		else
-			sb(b);
-		first = guard_node->next->value;
-		second = guard_node->next->next->value;
-		last = guard_node->prev->value;
-	}
+	guard = b->guard;
+	first = guard->next->value;
+	second = guard->next->next->value;
+	last = guard->prev->value;
+	if (first > second && first > last)
+		rb(b);
+	else if (first < second && second > last)
+		rrb(b);
+	first = guard->next->value;
+	second = guard->next->next->value;
+	if (first > second)
+		sb(b);
 }
 
-void	sort_three_a(t_stack *a)
+static void	sort_three_a(t_stack *a)
 {
-	t_nord	*guard_node;
+	t_node	*guard;
 	int		first;
 	int		second;
 	int		last;
 
 	printf("sort_three_a\n");
-	guard_node = a->guard_nord;
-	first = guard_node->next->value;
-	second = guard_node->next->next->value;
-	last = guard_node->prev->value;
-	while (first > second || second > last)
-	{
-		if (first > second && second < last && first > last)
-			ra(a);
-		else if (first < second && second > last && first > last)
-			rra(a);
-		else
-			sa(a);
-		first = guard_node->next->value;
-		second = guard_node->next->next->value;
-		last = guard_node->prev->value;
-	}
-}
-
-void	sort_small_b(t_stack *b)
-{
-	t_nord	*node;
-	int		size;
-
-	printf("sort_small_b\n");
-	size = b->size;
-	node = b->guard_nord->next;
-	if (size == 1)
-		return ;
-	else if (size == 2)
-	{
-		if (node->value > node->next->value)
-			sb(b);
-	}
-	else if (size == 3)
-		sort_three_b(b);
-}
-
-void	sort_small_a(t_stack *a)
-{
-	t_nord	*node;
-	int		size;
-
-	printf("sort_small_a\n");
-	size = a->size;
-	node = a->guard_nord->next;
-	if (size == 1)
-		return ;
-	else if (size == 2)
-	{
-		if (node->value > node->next->value)
-			sa(a);
-	}
-	else if (size == 3)
-		sort_three_a(a);
+	guard = a->guard;
+	first = guard->next->value;
+	second = guard->next->next->value;
+	last = guard->prev->value;
+	if (first > second && first > last)
+		ra(a);
+	else if (first < second && second > last)
+		rra(a);
+	first = guard->next->value;
+	second = guard->next->next->value;
+	if (first > second)
+		sa(a);
 }
 
 static int	get_min_value(t_stack *stack)
 {
-	t_nord	*node;
+	t_node	*node;
 	int		min;
 
-	node = stack->guard_nord->next;
+	node = stack->guard->next;
 	min = node->value;
-	while (node != stack->guard_nord)
+	while (node != stack->guard)
 	{
 		if (min > node->value)
 			min = node->value;
@@ -120,13 +72,13 @@ static int	get_min_value(t_stack *stack)
 	return (min);
 }
 
-void	sort_six_or_less(t_stack *a, t_stack *b)
+static void	sort_six_or_less(t_stack *a, t_stack *b)
 {
-	t_nord	*guard_a;
+	t_node	*guard_a;
 	int		min;
 
 	printf("sort_six_or_less\n");
-	guard_a = a->guard_nord;
+	guard_a = a->guard;
 	while (a->size != 3)
 	{
 		min = get_min_value(a);
@@ -142,4 +94,31 @@ void	sort_six_or_less(t_stack *a, t_stack *b)
 	sort_three_a(a);
 	while (b->size > 0)
 		pa(a, b);
+}
+
+void	sort_small(t_stack *to_sort, t_stack *sub, bool stack_type)
+{
+	int		size;
+	t_node	*node;
+
+	node = to_sort->guard->next;
+	size = to_sort->size;
+	if (size <= 1)
+		return ;
+	if (size == 2 && node->value > node->next->value)
+	{
+		if (stack_type == STACK_A)
+			sa(to_sort);
+		else
+			sb(to_sort);
+	}
+	else if (size == 3)
+	{
+		if (stack_type == STACK_A)
+			sort_three_a(to_sort);
+		else
+			sort_three_b(to_sort);
+	}
+	else if (size <= 6 && stack_type == STACK_A)
+		sort_six_or_less(to_sort, sub);
 }

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/16 02:05:48 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:45:24 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@
 # include <sysexits.h>
 # include <unistd.h>
 
-typedef struct s_nord
+# define STACK_A true
+# define STACK_B false
+
+typedef struct s_node
 {
-	struct s_nord	*next;
-	struct s_nord	*prev;
+	struct s_node	*next;
+	struct s_node	*prev;
 	int				value;
-}					t_nord;
+	bool			is_sorted;
+}					t_node;
 
 typedef struct s_stack
 {
-	t_nord			*guard_nord;
+	t_node			*guard;
 	int				size;
 }					t_stack;
 
@@ -66,11 +70,7 @@ void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
 void				sort(t_stack *a, t_stack *b);
-void				sort_six_or_less(t_stack *a, t_stack *b);
-void				sort_three_a(t_stack *a);
-void				sort_three_b(t_stack *b);
-void				sort_small_b(t_stack *b);
-void				quicksort(t_stack *a, t_stack *b);
+void				sort_small(t_stack *to_sort, t_stack *sub, bool stack_type);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);

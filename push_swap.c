@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 22:38:01 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:07:01 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,16 @@ int	main(int argc, const char **argv)
 	a = parse_input(argc, argv);
 	if (!a)
 		exit_with_print_error();
-	printf("input : ");
-	print_stack(a);
 	b = create_empty_stack();
 	if (!b)
 		free_stack_with_error(a);
 	sort(a, b);
-	printf("sorted : ");
-	print_stack(a);
 	free_stack(a);
 	free_stack(b);
 	return (0);
 }
 
-// __attribute__((destructor)) static void destructor()
-// {
-// 	system("leaks -q push_swap");
-// }
+__attribute__((destructor)) static void destructor()
+{
+	system("leaks -q push_swap");
+}

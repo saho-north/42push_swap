@@ -53,6 +53,7 @@ dkms.conf
 push_swap
 .vscode
 libft-tester-tokyo
+dump/
 
 *.txt
 .idea

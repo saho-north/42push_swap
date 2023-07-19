@@ -6,33 +6,34 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 22:35:26 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:46:57 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_nord_to_stack(int num, t_stack *stack)
+static void	push_node_to_stack(int num, t_stack *stack)
 {
-	t_nord	*node;
+	t_node	*node;
 
-	node = (t_nord *)malloc(sizeof(t_nord));
+	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
 		free_stack_with_error(stack);
-	node->next = stack->guard_nord;
-	node->prev = stack->guard_nord->prev;
+	node->next = stack->guard;
+	node->prev = stack->guard->prev;
 	node->value = num;
-	stack->guard_nord->prev->next = node;
-	stack->guard_nord->prev = node;
+	node->is_sorted = false;
+	stack->guard->prev->next = node;
+	stack->guard->prev = node;
 	stack->size++;
 }
 
 static void	check_if_duplicate(int num, t_stack *stack)
 {
-	t_nord	*node;
+	t_node	*node;
 
-	node = stack->guard_nord->next;
-	while (node && node != stack->guard_nord)
+	node = stack->guard->next;
+	while (node && node != stack->guard)
 	{
 		if (node->value == num)
 			free_stack_with_error(stack);
@@ -57,7 +58,7 @@ t_stack	*parse_input(int argc, const char **argv)
 			if (num < INT_MIN || INT_MAX < num)
 				free_stack_with_error(stack);
 			check_if_duplicate((int)num, stack);
-			push_nord_to_stack((int)num, stack);
+			push_node_to_stack((int)num, stack);
 			str = endpos;
 		}
 		argv++;

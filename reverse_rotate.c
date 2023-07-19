@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/16 02:05:54 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:10:14 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ rrr : rra and rrb at the same time.
 
 static void	reverse_rotate(t_stack *stack)
 {
-	t_nord	*guard_nord;
-	t_nord	*first_node;
-	t_nord	*last_node;
-	t_nord	*second_last_node;
+	t_node	*guard;
+	t_node	*first_node;
+	t_node	*last_node;
+	t_node	*second_last_node;
 
-	guard_nord = stack->guard_nord;
-	if (guard_nord->next == guard_nord->prev)
+	guard = stack->guard;
+	if (guard->next == guard->prev)
 		return ;
-	first_node = guard_nord->next;
-	last_node = guard_nord->prev;
+	first_node = guard->next;
+	last_node = guard->prev;
 	second_last_node = last_node->prev;
-	guard_nord->next = last_node;
-	guard_nord->prev = second_last_node;
+	guard->next = last_node;
+	guard->prev = second_last_node;
 	last_node->next = first_node;
-	last_node->prev = guard_nord;
-	second_last_node->next = guard_nord;
+	last_node->prev = guard;
+	second_last_node->next = guard;
 	first_node->prev = last_node;
 }
 

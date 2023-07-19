@@ -6,27 +6,27 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:03:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/15 22:04:03 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:46:34 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_doubly_linked_list(t_nord *guard_nord)
+static void	free_doubly_linked_list(t_node *guard)
 {
-	t_nord	*node;
-	t_nord	*next;
+	t_node	*node;
+	t_node	*next;
 
-	if (!guard_nord)
+	if (!guard)
 		return ;
-	node = guard_nord->next;
-	while (node && node != guard_nord)
+	node = guard->next;
+	while (node && node != guard)
 	{
 		next = node->next;
 		free(node);
 		node = next;
 	}
-	free(guard_nord);
+	free(guard);
 }
 
 void	exit_with_print_error(void)
@@ -37,7 +37,7 @@ void	exit_with_print_error(void)
 
 void	free_stack(t_stack *stack)
 {
-	free_doubly_linked_list(stack->guard_nord);
+	free_doubly_linked_list(stack->guard);
 	free(stack);
 }
 
