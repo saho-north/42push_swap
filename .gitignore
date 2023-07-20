@@ -69,3 +69,4 @@ test/
 *.sh
 tester_2/
 push_swap_tester/
+test*.txt

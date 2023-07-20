@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/19 18:46:57 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:51:51 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	push_node_to_stack(int num, t_stack *stack)
 	node->next = stack->guard;
 	node->prev = stack->guard->prev;
 	node->value = num;
-	node->is_sorted = false;
 	stack->guard->prev->next = node;
 	stack->guard->prev = node;
 	stack->size++;

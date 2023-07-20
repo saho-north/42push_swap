@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:46:06 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/20 00:33:34 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:51:34 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static t_node	*create_guard(void)
 	guard->next = guard;
 	guard->prev = guard;
 	guard->value = 0;
-	guard->is_sorted = true;
 	return (guard);
 }
 

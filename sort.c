@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/20 23:24:15 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/21 03:29:44 by sakitaha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -18,140 +28,172 @@ static bool	is_sorted(t_stack *stack)
 	return (true);
 }
 
-static int	get_pivot(t_stack *stack)
-{
-	t_node	*node;
-	int		count_to_middle;
-	int		first;
-	int		middle;
-	int		last;
-
-	node = stack->guard->next;
-	count_to_middle = stack->size / 2;
-	while (count_to_middle--)
-		node = node->next;
-	first = stack->guard->next->value;
-	middle = node->value;
-	last = stack->guard->prev->value;
-	if (first < middle && middle < last)
-		return (middle);
-	else if (last < middle && middle < first)
-		return (middle);
-	else if (first < last && last < middle)
-		return (last);
-	else if (middle < last && last < first)
-		return (last);
-	else
-		return (first);
-}
-
-/*
-4. aの末尾へ小さい順に数字を挿入し、ソート済み扱いにしていく
- */
-
-void	push_sorted_nodes(t_stack *a, t_stack *b)
-{
-	t_node	*guard;
-
-	guard = b->guard;
-	sort_small(b, a, STACK_B);
-	while (b->size > 0)
-	{
-		guard->next->is_sorted = true;
-		pa(a, b);
-		ra(a);
-	}
-}
-
-void	refil_stack(t_stack *a, t_stack *b, int tmp_in_a)
+static int	check_pivots(int pivots[])
 {
 	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
-	while (i < tmp_in_a)
+	while (i < 2)
 	{
-		if (a->guard->next->is_sorted == false)
-			pb(a, b);
+		j = i + 1;
+		while (j < 3)
+		{
+			if (pivots[i] > pivots[j])
+			{
+				tmp = pivots[i];
+				pivots[i] = pivots[j];
+				pivots[j] = tmp;
+			}
+			j++;
+		}
 		i++;
 	}
+	return (pivots[1]);
 }
 
-/*
-3. bが分割できなくなるまで、bの数値を大小で分け、aにpushする
-4. 残ったbの数値を小さい順にaの末尾へ移動する
-5. aをbへpushし、bの分割を繰り返す
- */
-
-void	partition(t_stack *a, t_stack *b)
+static int	get_pivot(t_stack *stack, int size)
 {
-	int	pivot;
-	int	size;
-	int	tmp_in_a;
-	int	i;
+	t_node	*node;
+	int		pivots[3];
+	int		i;
+	int		j;
+	int		tmp;
 
-	if (b->size <= 3)
+	node = stack->guard->next;
+	pivots[0] = node->value;
+	i = 0;
+	while (i < size - 1)
 	{
-		push_sorted_nodes(a, b);
+		if (i == size / 2)
+			pivots[1] = node->value;
+		node = node->next;
+		i++;
+	}
+	pivots[2] = node->value;
+	return (check_pivots(pivots));
+}
+
+void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
+{
+	t_node	*guard;
+	int		pivot;
+	int		size_a;
+	int		rb_count;
+	int		i;
+
+	printf("\n>>> partition_for_stack_b\n");
+	guard = b->guard;
+	if (size < 3 || b->size <= 3)
+	{
+		// I'm not sure if it's correct to push sorted nodes to stack_a here.
+		printf("size_a < 3 or a->size <= 3\n");
+		printf("[return] size: %d\n", size);
+		if (size == 0)
+			return ;
+		else if (size == 2 && guard->next->value < guard->next->next->value)
+			sb(b);
+		else if (a->size == 3)
+			sort_small(a, b, STACK_B);
+		while (b->size > 0 && size > 0)
+		{
+			pa(a, b);
+			size--;
+		}
+		print_stacks(a, b);
 		return ;
 	}
-	size = b->size;
-	pivot = get_pivot(b);
-	tmp_in_a = 0;
+	pivot = get_pivot(b, size);
+	printf("pivot: %d, size_a: %d\n", pivot, size);
+	size_a = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (b->guard->next->value < pivot)
+		if (guard->next->value < pivot)
 			rb(b);
 		else
 		{
 			pa(a, b);
-			tmp_in_a++;
+			size_a++;
 		}
 		i++;
 	}
-	partition_and_refill(a, b, tmp_in_a);
+	rb_count = size - size_a;
+	printf("size_a: %d, size_b: %d\n", size_a, size - size_a);
+	printf("<<< partition_for_stack_b\n");
+	print_stacks(a, b);
+	printf("rb_count: %d\n", rb_count);
+	while (rb_count > 0)
+	{
+		rrb(b);
+		rb_count--;
+	}
+	print_stacks(a, b);
+	printf("size_a: %d, size_b: %d\n", size_a, size - size_a);
+	partition(a, b, size_a, size - size_a);
 }
 
-void	partition_and_refill(t_stack *a, t_stack *b, int tmp_in_a)
-{
-	if (b->size > 0)
-	{
-		partition(a, b);
-	}
-	if (tmp_in_a > 0)
-	{
-		refil_stack(a, b, tmp_in_a);
-	}
-	if (b->size > 0)
-	{
-		partition(a, b);
-	}
-}
-
-/*
-1. 初期状態。aに数値がある
-2. aの数値を大小で分け、bにpushする
-*/
-void	initial_partition(t_stack *a, t_stack *b)
+void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 {
 	t_node	*guard;
-	int		size;
 	int		pivot;
+	int		size_b;
 	int		i;
+	int		ra_count;
 
+	printf("\n>>> partition_for_stack_a\n");
 	guard = a->guard;
-	size = a->size;
-	pivot = get_pivot(a);
+	if (size < 3 || a->size <= 3)
+	{
+		printf("[return] size: %d\n", size);
+		if (size == 2 && guard->next->value > guard->next->next->value)
+			sa(a);
+		if (a->size == 3)
+			sort_small(a, b, STACK_A);
+		print_stacks(a, b);
+		return ;
+	}
+	pivot = get_pivot(a, size);
+	printf("pivot: %d, size_a: %d\n", pivot, size);
+	size_b = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (guard->next->value <= pivot)
+		if (guard->next->value < pivot)
+		{
 			pb(a, b);
+			size_b++;
+		}
 		else
+		{
 			ra(a);
+		}
 		i++;
 	}
-	partition_and_refill(a, b, a->size);
+	printf("size_a: %d, size_b: %d\n", size - size_b, size_b);
+	printf("<<< partition_for_stack_a\n");
+	print_stacks(a, b);
+	ra_count = size - size_b;
+	printf("ra_count: %d\n", ra_count);
+	while (size < a->size && ra_count > 0)
+	{
+		rra(a);
+		ra_count--;
+	}
+	partition(a, b, size - size_b, size_b);
+}
+
+void	partition(t_stack *a, t_stack *b, int size_a, int size_b)
+{
+	if (size_a > 0)
+	{
+		partition_for_stack_a(a, b, size_a);
+	}
+	if (size_b > 0)
+	{
+		partition_for_stack_b(a, b, size_b);
+	}
 }
 
 void	sort(t_stack *a, t_stack *b)
@@ -166,5 +208,5 @@ void	sort(t_stack *a, t_stack *b)
 		sort_small(a, b, STACK_A);
 	}
 	else
-		initial_partition(a, b);
+		partition(a, b, size, 0);
 }

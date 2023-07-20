@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/20 01:05:13 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/21 03:32:12 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				value;
-	bool			is_sorted;
 }					t_node;
 
 typedef struct s_stack
@@ -53,6 +52,7 @@ int					ft_issign(int c);
 void				ft_putendl_fd(char *s, int fd);
 size_t				ft_strlen(const char *str);
 long				ft_strtol(const char *str, const char **endpos);
+int					get_pivot(t_stack *stack, int size);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
@@ -71,8 +71,7 @@ void				rrr(t_stack *a, t_stack *b);
 
 void				sort(t_stack *a, t_stack *b);
 void				sort_small(t_stack *to_sort, t_stack *sub, bool stack_type);
-void				partition_and_refill(t_stack *a, t_stack *b, int tmp_in_a);
-
+void				partition(t_stack *a, t_stack *b, int size_a, int size_b);
 // to be deleted later on
 void				print_stack(t_stack *stack);
 

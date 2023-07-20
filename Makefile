@@ -23,7 +23,7 @@ fclean: clean
 re: fclean all
 
 test: $(NAME) clean
-	./$(NAME) 2 1 3 6 5 8 7 4
+	./$(NAME) 1 6 2 8 3 0 9 5 4 7
 
 temp: $(NAME) clean
 	./$(NAME) 2 1 3 6 5 8 7 4
