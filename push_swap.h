@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/21 03:32:12 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/21 04:54:44 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_stack				*create_empty_stack(void);
 
 void				exit_with_print_error(void);
 void				free_stack(t_stack *stack);
-void				free_stack_with_error(t_stack *stack);
-void				free_stacks_with_error(t_stack *a, t_stack *b);
+void				free_stack_with_print_error(t_stack *stack);
+void				free_stacks_with_print_error(t_stack *a, t_stack *b);
 
 int					ft_isdigit(int c);
 int					ft_isdigsig(int c);

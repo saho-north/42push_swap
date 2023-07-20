@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/20 23:51:51 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/21 04:54:44 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	push_node_to_stack(int num, t_stack *stack)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		free_stack_with_error(stack);
+		free_stack_with_print_error(stack);
 	node->next = stack->guard;
 	node->prev = stack->guard->prev;
 	node->value = num;
@@ -35,7 +35,7 @@ static void	check_if_duplicate(int num, t_stack *stack)
 	while (node && node != stack->guard)
 	{
 		if (node->value == num)
-			free_stack_with_error(stack);
+			free_stack_with_print_error(stack);
 		node = node->next;
 	}
 }
@@ -55,7 +55,7 @@ t_stack	*parse_input(int argc, const char **argv)
 		{
 			num = ft_strtol(str, &endpos);
 			if (num < INT_MIN || INT_MAX < num)
-				free_stack_with_error(stack);
+				free_stack_with_print_error(stack);
 			check_if_duplicate((int)num, stack);
 			push_node_to_stack((int)num, stack);
 			str = endpos;

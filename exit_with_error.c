@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_with_error.c                                  :+:      :+:    :+:   */
+/*   exit_with_print_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -41,13 +41,13 @@ void	free_stack(t_stack *stack)
 	free(stack);
 }
 
-void	free_stack_with_error(t_stack *stack)
+void	free_stack_with_print_error(t_stack *stack)
 {
 	free_stack(stack);
 	exit_with_print_error();
 }
 
-void	free_stacks_with_error(t_stack *a, t_stack *b)
+void	free_stacks_with_print_error(t_stack *a, t_stack *b)
 {
 	free_stack(a);
 	free_stack(b);
