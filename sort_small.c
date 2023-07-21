@@ -6,12 +6,13 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/20 02:04:29 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:02:46 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//b側は逆順になるようにしないと行けない
 static void	sort_three_b(t_stack *b)
 {
 	t_node	*guard;
