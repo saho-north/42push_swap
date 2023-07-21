@@ -6,13 +6,12 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/21 16:02:46 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/22 01:58:11 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//b側は逆順になるようにしないと行けない
 static void	sort_three_b(t_stack *b)
 {
 	t_node	*guard;
@@ -24,13 +23,13 @@ static void	sort_three_b(t_stack *b)
 	first = guard->next->value;
 	second = guard->next->next->value;
 	last = guard->prev->value;
-	if (first > second && first > last)
+	if (first < second && first < last)
 		rb(b);
-	else if (first < second && second > last)
+	else if (first > second && second < last)
 		rrb(b);
 	first = guard->next->value;
 	second = guard->next->next->value;
-	if (first > second)
+	if (first < second)
 		sb(b);
 }
 
@@ -71,7 +70,7 @@ static int	get_min_value(t_stack *stack)
 	return (min);
 }
 
-static void	sort_six_or_less(t_stack *a, t_stack *b)
+static void	sort_four_five_six(t_stack *a, t_stack *b)
 {
 	t_node	*guard_a;
 	int		min;
@@ -94,29 +93,27 @@ static void	sort_six_or_less(t_stack *a, t_stack *b)
 		pa(a, b);
 }
 
-void	sort_small(t_stack *to_sort, t_stack *sub, bool stack_type)
+void	sort_small(t_stack *src, t_stack *dst, int size, bool type)
 {
-	int		size;
 	t_node	*node;
 
-	node = to_sort->guard->next;
-	size = to_sort->size;
+	node = src->guard->next;
 	if (size <= 1)
 		return ;
-	if (size == 2 && node->value > node->next->value)
+	if (size == 2)
 	{
-		if (stack_type == STACK_A)
-			sa(to_sort);
-		else
-			sb(to_sort);
+		if (type == STACK_A && node->value > node->next->value)
+			sa(src);
+		else if (type == STACK_B && node->value < node->next->value)
+			sb(src);
 	}
 	else if (size == 3)
 	{
-		if (stack_type == STACK_A)
-			sort_three_a(to_sort);
+		if (type == STACK_A)
+			sort_three_a(src);
 		else
-			sort_three_b(to_sort);
+			sort_three_b(src);
 	}
-	else if (size <= 6 && stack_type == STACK_A)
-		sort_six_or_less(to_sort, sub);
+	else if (size <= 6 && type == STACK_A)
+		sort_four_five_six(src, dst);
 }
