@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 03:31:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/22 22:51:02 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/23 02:21:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	check_possible_pivots(int possible_pivots[], int arrsize)
 		}
 		i++;
 	}
-	printf("pivot[%d] = %d\n", arrsize / 2, possible_pivots[arrsize / 2]);
+	////printf("pivot[%d] = %d\n", arrsize / 2, possible_pivots[arrsize / 2]);
 	return (possible_pivots[arrsize / 2]);
 }
 
@@ -73,8 +73,8 @@ static int	median_of_five(t_stack *stack, int size)
 		if (i == (size / 5) * j)
 		{
 			possible_pivots[j] = node->value;
-			printf("i = %d, possible_pivots[%d] = %d\n", i, j,
-					possible_pivots[j]);
+			////printf("i = %d, possible_pivots[%d] = %d\n", i, j,
+			//		possible_pivots[j]);
 			j++;
 		}
 		node = node->next;
@@ -85,7 +85,7 @@ static int	median_of_five(t_stack *stack, int size)
 
 int	get_pivot(t_stack *stack, int size)
 {
-	printf("get_pivot for size %d\n", size);
+	//printf("get_pivot for size %d\n", size);
 	if (size == 3 || size == 4)
 		return (median_of_three(stack, size));
 	else

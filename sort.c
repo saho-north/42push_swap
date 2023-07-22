@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/22 22:36:37 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/23 02:21:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
 	int		rb_count;
 	int		i;
 
-	printf("\n>>> partition_for_stack_b\n");
+	//printf("\n>>> partition_for_stack_b\n");
 	print_stacks(a, b);
 	guard = b->guard;
 	if (size < 3 || b->size <= 3)
@@ -73,9 +73,9 @@ void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
 		rrb(b);
 		rb_count--;
 	}
-	printf("size_a = %d, size_b = %d\n", size_a, size - size_a);
+	//printf("size_a = %d, size_b = %d\n", size_a, size - size_a);
 	print_stacks(a, b);
-	printf("<<< partition_for_stack_b\n");
+	//printf("<<< partition_for_stack_b\n");
 	partition(a, b, size_a, size - size_a);
 }
 
@@ -87,7 +87,7 @@ void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 	int		i;
 	int		ra_count;
 
-	printf("\n>>> partition_for_stack_a\n");
+	//printf("\n>>> partition_for_stack_a\n");
 	print_stacks(a, b);
 	guard = a->guard;
 	if (size < 3 || a->size <= 3)
@@ -117,9 +117,9 @@ void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 		rra(a);
 		ra_count--;
 	}
-	printf("size_a = %d, size_b = %d\n", size - size_b, size_b);
+	//printf("size_a = %d, size_b = %d\n", size - size_b, size_b);
 	print_stacks(a, b);
-	printf("<<< partition_for_stack_a\n");
+	//printf("<<< partition_for_stack_a\n");
 	partition(a, b, size - size_b, size_b);
 }
 
