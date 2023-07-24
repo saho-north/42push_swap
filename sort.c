@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/23 02:21:59 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/25 00:33:52 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,36 @@
 
 void		partition(t_stack *a, t_stack *b, int size_a, int size_b);
 
-static bool	is_sorted(t_stack *stack)
+static bool	is_reverse_sorted(t_stack *stack, int size)
 {
 	t_node	*guard;
 	t_node	*node;
 
 	guard = stack->guard;
 	node = guard->next;
-	while (node != guard && node->next != guard)
+	while (node != guard && node->next != guard && size > 1)
+	{
+		if (node->value < node->next->value)
+			return (false);
+		node = node->next;
+		size--;
+	}
+	return (true);
+}
+
+static bool	is_sorted(t_stack *stack, int size)
+{
+	t_node	*guard;
+	t_node	*node;
+
+	guard = stack->guard;
+	node = guard->next;
+	while (node != guard && node->next != guard && size > 1)
 	{
 		if (node->value > node->next->value)
 			return (false);
 		node = node->next;
+		size--;
 	}
 	return (true);
 }
@@ -140,9 +158,21 @@ void	sort(t_stack *a, t_stack *b)
 	int	size;
 
 	size = a->size;
-	if (b->size == 0 && is_sorted(a))
+	if (b->size == 0 && is_sorted(a, size))
 		return ;
-	if (size < 7)
+	else if (b->size == 0 && is_reverse_sorted(a, size))
+	{
+		while (a->size > 0)
+		{
+			pb(a, b);
+			rb(b);
+		}
+		while (b->size > 0)
+		{
+			pa(a, b);
+		}
+	}
+	else if (size < 7)
 	{
 		sort_small(a, b, size, STACK_A);
 	}
