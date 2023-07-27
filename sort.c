@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/25 00:33:52 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/26 21:13:52 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
 	int		rb_count;
 	int		i;
 
-	//printf("\n>>> partition_for_stack_b\n");
+	//printf	("\n>>> partition_for_stack_b\n");
 	print_stacks(a, b);
 	guard = b->guard;
 	if (size < 3 || b->size <= 3)
@@ -69,19 +69,30 @@ void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
 		}
 		return ;
 	}
+	if (is_reverse_sorted(b, size))
+	{
+		// printf("reverse_sorted(b, %d) in partition_for_b\n", size);
+		while (b->size > 0 && size > 0)
+		{
+			pa(a, b);
+			size--;
+		}
+		return ;
+	}
 	pivot = get_pivot(b, size);
+	// printf("size = %d, pivot = %d\n", size, pivot);
 	size_a = 0;
 	i = 0;
 	while (i < size)
 	{
-		if (guard->next->value > pivot)
+		if (guard->next->value < pivot)
 		{
-			pa(a, b);
-			size_a++;
+			rb(b);
 		}
 		else
 		{
-			rb(b);
+			pa(a, b);
+			size_a++;
 		}
 		i++;
 	}
@@ -91,9 +102,9 @@ void	partition_for_stack_b(t_stack *a, t_stack *b, int size)
 		rrb(b);
 		rb_count--;
 	}
-	//printf("size_a = %d, size_b = %d\n", size_a, size - size_a);
+	// printf("size_a = %d, size_b = %d\n", size_a, size - size_a);
 	print_stacks(a, b);
-	//printf("<<< partition_for_stack_b\n");
+	// printf("<<< partition_for_stack_b\n");
 	partition(a, b, size_a, size - size_a);
 }
 
@@ -105,7 +116,7 @@ void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 	int		i;
 	int		ra_count;
 
-	//printf("\n>>> partition_for_stack_a\n");
+	// printf("\n>>> partition_for_stack_a\n");
 	print_stacks(a, b);
 	guard = a->guard;
 	if (size < 3 || a->size <= 3)
@@ -113,32 +124,107 @@ void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 		sort_small(a, b, size, STACK_A);
 		return ;
 	}
+	if (is_sorted(a, size))
+	{
+		return ;
+	}
 	pivot = get_pivot(a, size);
-	size_b = 0;
-	i = 0;
-	while (i < size)
+	// printf("size = %d, pivot = %d\n", size, pivot);
+	if (size == 3)
 	{
-		if (guard->next->value < pivot)
+		while (!is_sorted(a, size))
 		{
-			pb(a, b);
-			size_b++;
+			if (guard->next->value > guard->next->next->value)
+			{
+				sa(a);
+			}
+			else
+			{
+				ra(a);
+				sa(a);
+				rra(a);
+			}
 		}
-		else
-		{
-			ra(a);
-		}
-		i++;
+		return ;
 	}
-	ra_count = size - size_b;
-	while (a->size != size - size_b && ra_count > 0)
+	else if (size == 4)
 	{
-		rra(a);
-		ra_count--;
+		size_b = 0;
+		ra_count = 0;
+		while (size_b < 2)
+		{
+			if (guard->next->value < pivot)
+			{
+				pb(a, b);
+				size_b++;
+			}
+			else if (guard->next->next->value < pivot)
+			{
+				sa(a);
+				pb(a, b);
+				size_b++;
+			}
+			else
+			{
+				ra(a);
+				ra_count++;
+			}
+		}
+		while (ra_count > 0)
+		{
+			rra(a);
+			ra_count--;
+		}
+		if (guard->next->value > guard->next->next->value)
+		{
+			if (b->guard->next->value < b->guard->next->next->value)
+			{
+				ss(a, b);
+			}
+			else
+			{
+				sa(a);
+			}
+		}
+		else if (b->guard->next->value < b->guard->next->next->value)
+		{
+			sb(b);
+		}
+		while (size_b > 0)
+		{
+			pa(a, b);
+			size_b--;
+		}
+		return ;
 	}
-	//printf("size_a = %d, size_b = %d\n", size - size_b, size_b);
-	print_stacks(a, b);
-	//printf("<<< partition_for_stack_a\n");
-	partition(a, b, size - size_b, size_b);
+	else
+	{
+		size_b = 0;
+		i = 0;
+		while (i < size)
+		{
+			if (guard->next->value < pivot)
+			{
+				pb(a, b);
+				size_b++;
+			}
+			else
+			{
+				ra(a);
+			}
+			i++;
+		}
+		ra_count = size - size_b;
+		while (a->size != size - size_b && ra_count > 0)
+		{
+			rra(a);
+			ra_count--;
+		}
+		// printf("size_a = %d, size_b = %d\n", size - size_b, size_b);
+		print_stacks(a, b);
+		// printf("<<< partition_for_stack_a\n");
+		partition(a, b, size - size_b, size_b);
+	}
 }
 
 void	partition(t_stack *a, t_stack *b, int size_a, int size_b)
@@ -160,6 +246,10 @@ void	sort(t_stack *a, t_stack *b)
 	size = a->size;
 	if (b->size == 0 && is_sorted(a, size))
 		return ;
+	else if (size < 7)
+	{
+		sort_small(a, b, size, STACK_A);
+	}
 	else if (b->size == 0 && is_reverse_sorted(a, size))
 	{
 		while (a->size > 0)
@@ -171,10 +261,6 @@ void	sort(t_stack *a, t_stack *b)
 		{
 			pa(a, b);
 		}
-	}
-	else if (size < 7)
-	{
-		sort_small(a, b, size, STACK_A);
 	}
 	else
 		partition(a, b, size, 0);
