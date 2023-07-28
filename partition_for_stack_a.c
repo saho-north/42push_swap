@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 07:58:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 07:58:34 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:51:27 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,56 +51,171 @@ void	partition_for_stack_a(t_stack *a, t_stack *b, int size)
 		}
 		return ;
 	}
-	else if (size == 4)
-	{
-		size_b = 0;
-		ra_count = 0;
-		while (size_b < 2)
-		{
-			if (guard->next->value < pivot)
-			{
-				pb(a, b);
-				size_b++;
-			}
-			else if (guard->next->next->value < pivot)
-			{
-				sa(a);
-				pb(a, b);
-				size_b++;
-			}
-			else
-			{
-				ra(a);
-				ra_count++;
-			}
-		}
-		while (ra_count > 0)
-		{
-			rra(a);
-			ra_count--;
-		}
-		if (guard->next->value > guard->next->next->value)
-		{
-			if (b->guard->next->value < b->guard->next->next->value)
-			{
-				ss(a, b);
-			}
-			else
-			{
-				sa(a);
-			}
-		}
-		else if (b->guard->next->value < b->guard->next->next->value)
-		{
-			sb(b);
-		}
-		while (size_b > 0)
-		{
-			pa(a, b);
-			size_b--;
-		}
-		return ;
-	}
+	// else if (size == 4)
+	// {
+	// 	size_b = 0;
+	// 	ra_count = 0;
+	// 	while (size_b < 2)
+	// 	{
+	// 		if (guard->next->value < pivot)
+	// 		{
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else if (guard->next->next->value < pivot)
+	// 		{
+	// 			sa(a);
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else
+	// 		{
+	// 			ra(a);
+	// 			ra_count++;
+	// 		}
+	// 	}
+	// 	while (ra_count > 0)
+	// 	{
+	// 		rra(a);
+	// 		ra_count--;
+	// 	}
+	// 	if (guard->next->value > guard->next->next->value)
+	// 	{
+	// 		if (b->guard->next->value < b->guard->next->next->value)
+	// 		{
+	// 			ss(a, b);
+	// 		}
+	// 		else
+	// 		{
+	// 			sa(a);
+	// 		}
+	// 	}
+	// 	else if (b->guard->next->value < b->guard->next->next->value)
+	// 	{
+	// 		sb(b);
+	// 	}
+	// 	while (size_b > 0)
+	// 	{
+	// 		pa(a, b);
+	// 		size_b--;
+	// 	}
+	// 	return ;
+	// }
+	// else if (size == 5)
+	// {
+	// 	size_b = 0;
+	// 	ra_count = 0;
+	// 	while (size_b < 3)
+	// 	{
+	// 		if (guard->next->value < pivot)
+	// 		{
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else if (guard->next->value == pivot)
+	// 		{
+	// 			pb(a, b);
+	// 			rb(b);
+	// 			size_b++;
+	// 		}
+	// 		else if (guard->next->next->value < pivot)
+	// 		{
+	// 			sa(a);
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else
+	// 		{
+	// 			ra(a);
+	// 			ra_count++;
+	// 		}
+	// 	}
+	// 	while (ra_count > 0)
+	// 	{
+	// 		rra(a);
+	// 		ra_count--;
+	// 	}
+	// 	if (guard->next->value > guard->next->next->value)
+	// 	{
+	// 		if (b->guard->next->value < b->guard->next->next->value)
+	// 		{
+	// 			ss(a, b);
+	// 		}
+	// 		else
+	// 		{
+	// 			sa(a);
+	// 		}
+	// 	}
+	// 	else if (b->guard->next->value < b->guard->next->next->value)
+	// 	{
+	// 		sb(b);
+	// 	}
+	// 	rrb(b);
+	// 	while (size_b > 0)
+	// 	{
+	// 		pa(a, b);
+	// 		size_b--;
+	// 	}
+	// 	return ;
+	// }
+	// else if (size == -1)
+	// {
+	// 	size_b = 0;
+	// 	ra_count = 0;
+	// 	compaction(a, 6);
+	// 	while (size_b < 4)
+	// 	{
+	// 		if (guard->next->value < pivot)
+	// 		{
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else if (guard->next->next->value < pivot)
+	// 		{
+	// 			sa(a);
+	// 			pb(a, b);
+	// 			size_b++;
+	// 		}
+	// 		else if (guard->next->value == pivot)
+	// 		{
+	// 			pb(a, b);
+	// 			rb(b);
+	// 			size_b++;
+	// 		}
+	// 		else
+	// 		{
+	// 			ra(a);
+	// 			ra_count++;
+	// 		}
+	// 	}
+	// 	while (ra_count > 0)
+	// 	{
+	// 		rra(a);
+	// 		ra_count--;
+	// 	}
+	// 	if (guard->next->value > guard->next->next->value)
+	// 	{
+	// 		if (b->guard->next->value < b->guard->next->next->value)
+	// 		{
+	// 			ss(a, b);
+	// 		}
+	// 		else
+	// 		{
+	// 			sa(a);
+	// 		}
+	// 	}
+	// 	else if (b->guard->next->value < b->guard->next->next->value)
+	// 	{
+	// 		sb(b);
+	// 	}
+	// 	rrb(b);
+	// 	while (size_b > 0)
+	// 	{
+	// 		pa(a, b);
+	// 		size_b--;
+	// 	}
+	// 	return ;
+	//}
 	else
 	{
 		size_b = 0;

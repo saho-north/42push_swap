@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 10:53:35 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 11:13:45 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/28 13:14:53 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void	compaction(t_stack *stack, int size)
 		node = node->next;
 		i++;
 	}
+	free(array);
 }

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 11:06:31 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:08:27 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void				partition(t_stack *a, t_stack *b, int size_a, int size_b);
 void				partition_for_stack_a(t_stack *a, t_stack *b, int size);
 void				partition_for_stack_b(t_stack *a, t_stack *b, int size);
 
-int					*create_array(t_stack *stack, int size);
-void				ft_sort_int_tab(int *tab, int size);
 void				compaction(t_stack *stack, int size);
 
 void				print_stack(t_stack *stack);
