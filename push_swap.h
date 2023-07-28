@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/22 03:37:16 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:06:31 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				value;
+	int				compressedValue;
 }					t_node;
 
 typedef struct s_stack
@@ -35,6 +36,14 @@ typedef struct s_stack
 	t_node			*guard;
 	int				size;
 }					t_stack;
+
+void				partition(t_stack *a, t_stack *b, int size_a, int size_b);
+void				partition_for_stack_a(t_stack *a, t_stack *b, int size);
+void				partition_for_stack_b(t_stack *a, t_stack *b, int size);
+
+int					*create_array(t_stack *stack, int size);
+void				ft_sort_int_tab(int *tab, int size);
+void				compaction(t_stack *stack, int size);
 
 void				print_stack(t_stack *stack);
 void				print_stacks(t_stack *a, t_stack *b);
@@ -53,6 +62,8 @@ void				ft_putendl_fd(char *s, int fd);
 size_t				ft_strlen(const char *str);
 long				ft_strtol(const char *str, const char **endpos);
 int					get_pivot(t_stack *stack, int size);
+bool				is_reverse_sorted(t_stack *stack, int size);
+bool				is_sorted(t_stack *stack, int size);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);

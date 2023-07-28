@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 03:31:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/25 05:03:37 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/28 07:49:34 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ static int	median_of_five(t_stack *stack, int size)
 
 int	get_pivot(t_stack *stack, int size)
 {
-	if (size == 3)
+	if (size < 3)
+		return (stack->guard->next->value);
+	else if (size == 3)
 		return (median_of_three(stack, size));
 	else if (size == 4)
 		return (median_of_four(stack, size));
