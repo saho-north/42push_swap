@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   partition.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/29 13:15:40 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/29 13:14:21 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/07/29 14:51:54 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	sort(t_stack *a, t_stack *b)
+void	partition(t_stack *a, t_stack *b, int size_a, int size_b)
 {
-	int	size;
-
-	size = a->size;
-	if (b->size == 0 && is_sorted(a, size))
-		return ;
-	else if (size < 7)
+	if (size_a > 0)
 	{
-		sort_small(a, b, size, STACK_A);
+		partition_for_stack_a(a, b, size_a);
 	}
-	else if (b->size == 0 && is_reverse_sorted(a, size))
+	if (size_b > 0)
 	{
-		while (a->size > 0)
-		{
-			pb(a, b);
-			rb(b);
-		}
-		while (b->size > 0)
-		{
-			pa(a, b);
-		}
+		partition_for_stack_b(a, b, size_b);
 	}
-	else
-		partition(a, b, size, 0);
 }

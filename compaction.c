@@ -6,33 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 13:14:53 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/29 13:25:22 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	*create_array(t_stack *stack, int size)
-{
-	t_node	*node;
-	int		*array;
-	int		i;
-
-	if (size < 2)
-		return (NULL);
-	node = stack->guard->next;
-	array = (int *)malloc(sizeof(int) * size);
-	if (!array)
-		exit_with_print_error();
-	i = 0;
-	while (i < size)
-	{
-		array[i] = node->value;
-		node = node->next;
-		i++;
-	}
-	return (array);
-}
 
 static void	ft_swap(int *a, int *b)
 {
@@ -67,6 +45,28 @@ static void	ft_sort_int_tab(int *tab, int size)
 			break ;
 		i++;
 	}
+}
+
+static int	*create_array(t_stack *stack, int size)
+{
+	t_node	*node;
+	int		*array;
+	int		i;
+
+	if (size < 2)
+		return (NULL);
+	node = stack->guard->next;
+	array = (int *)malloc(sizeof(int) * size);
+	if (!array)
+		exit_with_print_error();
+	i = 0;
+	while (i < size)
+	{
+		array[i] = node->value;
+		node = node->next;
+		i++;
+	}
+	return (array);
 }
 
 void	compaction(t_stack *stack, int size)
