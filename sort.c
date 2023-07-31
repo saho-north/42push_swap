@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 22:47:37 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 01:00:35 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sort(t_stack *a, t_stack *b)
 {
-	int	size;
+	size_t	size;
 
 	size = a->size;
 	if (size < 7)

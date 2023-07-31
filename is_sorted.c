@@ -6,13 +6,13 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 07:52:46 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 07:55:41 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 00:55:01 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	is_sorted(t_stack *stack, int size)
+bool	is_sorted(t_stack *stack, size_t size)
 {
 	t_node	*guard;
 	t_node	*node;

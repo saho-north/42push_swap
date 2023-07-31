@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 22:52:28 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 00:59:17 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ typedef struct s_stack
 	int				size;
 }					t_stack;
 
-void				partition(t_stack *a, t_stack *b, int size_a, int size_b);
-void				partition_for_stack_a(t_stack *a, t_stack *b, int size);
-void				partition_for_stack_b(t_stack *a, t_stack *b, int size);
+void				partition(t_stack *a, t_stack *b, size_t size_a,
+						size_t size_b);
+void				partition_for_stack_a(t_stack *a, t_stack *b, size_t size);
+void				partition_for_stack_b(t_stack *a, t_stack *b, size_t size);
 
 void				compaction(t_stack *stack);
 
@@ -59,9 +60,9 @@ int					ft_issign(int c);
 void				ft_putendl_fd(char *s, int fd);
 size_t				ft_strlen(const char *str);
 long				ft_strtol(const char *str, const char **endpos);
-int					get_pivot(t_stack *stack, int size);
-bool				is_reverse_sorted(t_stack *stack, int size);
-bool				is_sorted(t_stack *stack, int size);
+int					get_pivot(t_stack *stack, size_t size);
+bool				is_reverse_sorted(t_stack *stack, size_t size);
+bool				is_sorted(t_stack *stack, size_t size);
 bool				is_valid_arg(int argc, const char **argv);
 
 t_stack				*parse_input(int argc, const char **argv);
@@ -79,7 +80,7 @@ void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
 void				sort(t_stack *a, t_stack *b);
-void				sort_small(t_stack *a, t_stack *b, int size, bool type);
+void				sort_small(t_stack *a, t_stack *b, size_t size, bool type);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);

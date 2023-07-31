@@ -6,17 +6,17 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 03:31:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 07:49:34 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 00:54:35 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_possible_pivots(int possible_pivots[], int arrsize)
+static int	check_possible_pivots(int possible_pivots[], size_t arrsize)
 {
-	int	i;
-	int	j;
-	int	tmp;
+	size_t	i;
+	size_t	j;
+	int		tmp;
 
 	i = 0;
 	while (i < arrsize - 1)
@@ -37,16 +37,16 @@ static int	check_possible_pivots(int possible_pivots[], int arrsize)
 	return (possible_pivots[arrsize / 2]);
 }
 
-static int	median_of_three(t_stack *stack, int size)
+static int	median_of_three(t_stack *stack, size_t size)
 {
 	t_node	*node;
 	int		possible_pivots[3];
-	int		i;
+	size_t	i;
 
 	node = stack->guard->next;
 	possible_pivots[0] = node->value;
 	i = 0;
-	while (i < size - 1)
+	while (i + 1 < size)
 	{
 		if (i == size / 2)
 			possible_pivots[1] = node->value;
@@ -57,12 +57,12 @@ static int	median_of_three(t_stack *stack, int size)
 	return (check_possible_pivots(possible_pivots, 3));
 }
 
-static int	median_of_four(t_stack *stack, int size)
+static int	median_of_four(t_stack *stack, size_t size)
 {
 	t_node	*node;
 	int		possible_pivots[4];
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	node = stack->guard->next;
 	i = 0;
@@ -80,12 +80,12 @@ static int	median_of_four(t_stack *stack, int size)
 	return (check_possible_pivots(possible_pivots, 4));
 }
 
-static int	median_of_five(t_stack *stack, int size)
+static int	median_of_five(t_stack *stack, size_t size)
 {
 	t_node	*node;
 	int		possible_pivots[5];
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	node = stack->guard->next;
 	i = 0;
@@ -103,7 +103,7 @@ static int	median_of_five(t_stack *stack, int size)
 	return (check_possible_pivots(possible_pivots, 5));
 }
 
-int	get_pivot(t_stack *stack, int size)
+int	get_pivot(t_stack *stack, size_t size)
 {
 	if (size < 3)
 		return (stack->guard->next->value);

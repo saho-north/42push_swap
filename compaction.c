@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 22:37:21 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 00:51:42 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,37 @@ static void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-static void	ft_sort_int_tab(int *tab, int size)
+static void	ft_sort_int_tab(int *tab, size_t size)
 {
-	int	i;
-	int	j;
-	int	swap_count;
+	size_t	i;
+	size_t	j;
+	bool	sorted;
 
 	i = 0;
-	while (i < size - 1)
+	while (i + 1 < size)
 	{
 		j = 0;
-		swap_count = 0;
-		while (j < size - i - 1)
+		sorted = true;
+		while (i + j + 1 < size)
 		{
 			if (tab[j] > tab[j + 1])
 			{
 				ft_swap(&tab[j], &tab[j + 1]);
-				swap_count++;
+				sorted = false;
 			}
 			j++;
 		}
-		if (swap_count == 0)
+		if (sorted)
 			break ;
 		i++;
 	}
 }
 
-static int	*create_tmp_array(t_stack *stack, int size)
+static int	*create_tmp_array(t_stack *stack, size_t size)
 {
 	t_node	*node;
 	int		*array;
-	int		i;
+	size_t	i;
 
 	if (size < 2)
 		return (NULL);
@@ -73,9 +73,9 @@ void	compaction(t_stack *stack)
 {
 	t_node	*node;
 	int		*array;
-	int		size;
-	int		i;
-	int		j;
+	size_t	size;
+	size_t	i;
+	size_t	j;
 
 	node = stack->guard->next;
 	size = stack->size;
