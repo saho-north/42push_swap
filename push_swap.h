@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 21:44:39 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:52:28 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
 
 void				sort(t_stack *a, t_stack *b);
-void				sort_small(t_stack *src, t_stack *dst, int size, bool type);
+void				sort_small(t_stack *a, t_stack *b, int size, bool type);
 
 // to be deleted later on
 void				print_stack(t_stack *stack);

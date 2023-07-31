@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/22 01:58:11 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:50:35 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,27 @@ static void	sort_four_five_six(t_stack *a, t_stack *b)
 		pa(a, b);
 }
 
-void	sort_small(t_stack *src, t_stack *dst, int size, bool type)
+void	sort_small(t_stack *a, t_stack *b, int size, bool type)
 {
 	t_node	*node;
 
-	node = src->guard->next;
+	node = a->guard->next;
 	if (size <= 1)
 		return ;
 	if (size == 2)
 	{
 		if (type == STACK_A && node->value > node->next->value)
-			sa(src);
+			sa(a);
 		else if (type == STACK_B && node->value < node->next->value)
-			sb(src);
+			sb(b);
 	}
 	else if (size == 3)
 	{
 		if (type == STACK_A)
-			sort_three_a(src);
+			sort_three_a(a);
 		else
-			sort_three_b(src);
+			sort_three_b(b);
 	}
 	else if (size <= 6 && type == STACK_A)
-		sort_four_five_six(src, dst);
+		sort_four_five_six(a, b);
 }
