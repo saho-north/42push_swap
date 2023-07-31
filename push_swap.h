@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 19:20:49 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:44:39 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				value;
-	int				compressed_id;
+	size_t			index;
 }					t_node;
 
 typedef struct s_stack

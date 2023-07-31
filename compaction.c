@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/31 19:28:35 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:37:21 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-static int	*create_array(t_stack *stack, int size)
+static int	*create_tmp_array(t_stack *stack, int size)
 {
 	t_node	*node;
 	int		*array;
@@ -79,7 +79,7 @@ void	compaction(t_stack *stack)
 
 	node = stack->guard->next;
 	size = stack->size;
-	array = create_array(stack, size);
+	array = create_tmp_array(stack, size);
 	ft_sort_int_tab(array, size);
 	i = 0;
 	while (i < size && node != stack->guard)
@@ -89,7 +89,7 @@ void	compaction(t_stack *stack)
 		{
 			if (node->value == array[j])
 			{
-				node->compressed_id = j;
+				node->index = j;
 				break ;
 			}
 			j++;
