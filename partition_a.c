@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:52:11 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/29 14:57:17 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:18:56 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,6 @@ void	partition_for_a(t_stack *a, t_stack *b, int size)
 	{
 		size_b = 0;
 		ra_count = 0;
-		compaction(a, 6);
 		while (size_b < 4)
 		{
 			if (guard->next->value < pivot)

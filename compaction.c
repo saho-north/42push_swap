@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/29 13:25:22 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:28:35 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static int	*create_array(t_stack *stack, int size)
 	node = stack->guard->next;
 	array = (int *)malloc(sizeof(int) * size);
 	if (!array)
-		exit_with_print_error();
+		free_stack_with_print_error(stack);
 	i = 0;
-	while (i < size)
+	while (i < size && node != stack->guard)
 	{
 		array[i] = node->value;
 		node = node->next;
@@ -69,25 +69,27 @@ static int	*create_array(t_stack *stack, int size)
 	return (array);
 }
 
-void	compaction(t_stack *stack, int size)
+void	compaction(t_stack *stack)
 {
 	t_node	*node;
 	int		*array;
+	int		size;
 	int		i;
 	int		j;
 
 	node = stack->guard->next;
+	size = stack->size;
 	array = create_array(stack, size);
 	ft_sort_int_tab(array, size);
 	i = 0;
-	while (i < size)
+	while (i < size && node != stack->guard)
 	{
 		j = 0;
 		while (j < size)
 		{
 			if (node->value == array[j])
 			{
-				node->compressedValue = j;
+				node->compressed_id = j;
 				break ;
 			}
 			j++;

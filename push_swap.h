@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/28 13:08:27 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:20:49 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				value;
-	int				compressedValue;
+	int				compressed_id;
 }					t_node;
 
 typedef struct s_stack
@@ -41,7 +41,7 @@ void				partition(t_stack *a, t_stack *b, int size_a, int size_b);
 void				partition_for_stack_a(t_stack *a, t_stack *b, int size);
 void				partition_for_stack_b(t_stack *a, t_stack *b, int size);
 
-void				compaction(t_stack *stack, int size);
+void				compaction(t_stack *stack);
 
 void				print_stack(t_stack *stack);
 void				print_stacks(t_stack *a, t_stack *b);

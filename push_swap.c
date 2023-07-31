@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/25 07:14:00 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:15:40 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 int	main(int argc, const char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	if (argc == 1)
 		return (0);
 	if (!is_valid_arg(--argc, ++argv))
 		exit_with_print_error();
-	a = parse_input(argc, argv);
-	if (!a)
+	stack_a = parse_input(argc, argv);
+	if (!stack_a)
 		exit_with_print_error();
-	b = create_empty_stack();
-	if (!b)
-		free_stack_with_print_error(a);
-	sort(a, b);
-	print_stacks_final(a, b);
-	free_stack(a);
-	free_stack(b);
+	if (stack_a->size == 1)
+		return (0);
+	stack_b = create_empty_stack();
+	if (!stack_b)
+		free_stack_with_print_error(stack_a);
+	sort(stack_a, stack_b);
+	print_stacks_final(stack_a, stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }
 
