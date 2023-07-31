@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 00:51:42 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:52:51 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,51 @@ static void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
+// static void	ft_sort_int_tab(int *tab, size_t size)
+// {
+// 	size_t	i;
+// 	size_t	j;
+// 	bool	sorted;
+
+// 	i = 0;
+// 	while (i + 1 < size)
+// 	{
+// 		j = 0;
+// 		sorted = true;
+// 		while (i + j + 1 < size)
+// 		{
+// 			if (tab[j] > tab[j + 1])
+// 			{
+// 				ft_swap(&tab[j], &tab[j + 1]);
+// 				sorted = false;
+// 			}
+// 			j++;
+// 		}
+// 		if (sorted)
+// 			break ;
+// 		i++;
+// 	}
+// }
+
 static void	ft_sort_int_tab(int *tab, size_t size)
 {
 	size_t	i;
-	size_t	j;
 	bool	sorted;
 
-	i = 0;
-	while (i + 1 < size)
+	sorted = false;
+	while (!sorted)
 	{
-		j = 0;
 		sorted = true;
-		while (i + j + 1 < size)
+		i = 0;
+		while (i + 1 < size)
 		{
-			if (tab[j] > tab[j + 1])
+			if (tab[i] > tab[i + 1])
 			{
-				ft_swap(&tab[j], &tab[j + 1]);
+				ft_swap(&tab[i], &tab[i + 1]);
 				sorted = false;
 			}
-			j++;
+			i++;
 		}
-		if (sorted)
-			break ;
-		i++;
 	}
 }
 
@@ -53,8 +75,6 @@ static int	*create_tmp_array(t_stack *stack, size_t size)
 	int		*array;
 	size_t	i;
 
-	if (size < 2)
-		return (NULL);
 	node = stack->guard->next;
 	array = (int *)malloc(sizeof(int) * size);
 	if (!array)

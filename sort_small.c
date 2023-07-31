@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 01:00:19 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 07:02:36 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ void	sort_small(t_stack *a, t_stack *b, size_t size, bool type)
 {
 	t_node	*node;
 
-	node = a->guard->next;
+	if (type == STACK_A)
+		node = a->guard->next;
+	else
+		node = b->guard->next;
 	if (size <= 1)
 		return ;
 	if (size == 2)

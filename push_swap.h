@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 03:05:42 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/01 05:59:13 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_stack
 }					t_stack;
 
 void				compaction(t_stack *stack);
-
+void				partition(t_stack *a, t_stack *b);
 void				print_stack(t_stack *stack);
 void				print_stacks(t_stack *a, t_stack *b);
 
@@ -80,5 +80,6 @@ void				sort_small(t_stack *a, t_stack *b, size_t size, bool type);
 // to be deleted later on
 void				print_stack(t_stack *stack);
 void				print_stacks_final(t_stack *a, t_stack *b);
+void				print_stack_size(t_stack *stack, size_t size);
 
 #endif
