@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 04:20:21 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 01:25:27 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 03:50:13 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,30 @@ static void	push_sorted_nodes(t_stack *a, t_stack *b, size_t size)
 	{
 		pa(a, b);
 		i++;
+	}
+}
+
+static void	sort_push_top_3_b(t_stack *a, t_stack *b, size_t min_id)
+{
+	size_t	pa_count;
+
+	pa_count = 0;
+	while (pa_count < 3)
+	{
+		if (b->guard->next->index != min_id || pa_count != 0)
+		{
+			pa(a, b);
+			pa_count++;
+		}
+		if (a->guard->next->index > a->guard->next->next->index)
+		{
+			if (b->guard->next->index < b->guard->next->next->index)
+				ss(a, b);
+			else
+				sa(a);
+		}
+		if (b->guard->next->index < b->guard->next->next->index)
+			sb(b);
 	}
 }
 
@@ -45,6 +69,11 @@ static void	partition_for_b(t_stack *a, t_stack *b, size_t size, size_t min_id)
 	if (is_reverse_sorted(b, size))
 	{
 		push_sorted_nodes(a, b, size);
+		return ;
+	}
+	if (size == 3)
+	{
+		sort_push_top_3_b(a, b, min_id);
 		return ;
 	}
 	pivot_left = min_id + size / 3;
