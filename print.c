@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:35:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 07:06:56 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:17:20 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_stack_size(t_stack *stack, size_t size)
 	printf("\n");
 }
 
-void	print_stack(t_stack *stack)
+static void	print_stack(t_stack *stack)
 {
 	t_node	*current;
 
@@ -55,7 +55,8 @@ void	print_stacks(t_stack *a, t_stack *b)
 	print_stack(b);
 	printf("----------------------------\n");
 }
-void	print_stack_final(t_stack *stack)
+
+static void	print_stack_final(t_stack *stack)
 {
 	t_node	*current;
 

@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 01:31:14 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:26:25 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_node
 typedef struct s_stack
 {
 	t_node			*guard;
-	int				size;
+	size_t			size;
 }					t_stack;
 
 void				compaction(t_stack *stack);

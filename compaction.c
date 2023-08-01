@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 04:52:51 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:25:26 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,6 @@ static void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
-
-// static void	ft_sort_int_tab(int *tab, size_t size)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	bool	sorted;
-
-// 	i = 0;
-// 	while (i + 1 < size)
-// 	{
-// 		j = 0;
-// 		sorted = true;
-// 		while (i + j + 1 < size)
-// 		{
-// 			if (tab[j] > tab[j + 1])
-// 			{
-// 				ft_swap(&tab[j], &tab[j + 1]);
-// 				sorted = false;
-// 			}
-// 			j++;
-// 		}
-// 		if (sorted)
-// 			break ;
-// 		i++;
-// 	}
-// }
 
 static void	ft_sort_int_tab(int *tab, size_t size)
 {
@@ -69,13 +43,15 @@ static void	ft_sort_int_tab(int *tab, size_t size)
 	}
 }
 
-static int	*create_tmp_array(t_stack *stack, size_t size)
+static int	*create_sorted_array(t_stack *stack)
 {
 	t_node	*node;
 	int		*array;
 	size_t	i;
+	size_t	size;
 
 	node = stack->guard->next;
+	size = stack->size;
 	array = (int *)malloc(sizeof(int) * size);
 	if (!array)
 		free_stack_with_print_error(stack);
@@ -86,6 +62,7 @@ static int	*create_tmp_array(t_stack *stack, size_t size)
 		node = node->next;
 		i++;
 	}
+	ft_sort_int_tab(array, size);
 	return (array);
 }
 
@@ -93,29 +70,23 @@ void	compaction(t_stack *stack)
 {
 	t_node	*node;
 	int		*array;
-	size_t	size;
 	size_t	i;
-	size_t	j;
 
 	node = stack->guard->next;
-	size = stack->size;
-	array = create_tmp_array(stack, size);
-	ft_sort_int_tab(array, size);
-	i = 0;
-	while (i < size && node != stack->guard)
+	array = create_sorted_array(stack);
+	while (node != stack->guard)
 	{
-		j = 0;
-		while (j < size)
+		i = 0;
+		while (i < stack->size)
 		{
-			if (node->value == array[j])
+			if (node->value == array[i])
 			{
-				node->index = j;
+				node->index = i;
 				break ;
 			}
-			j++;
+			i++;
 		}
 		node = node->next;
-		i++;
 	}
 	free(array);
 }
