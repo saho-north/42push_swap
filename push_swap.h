@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/01 05:59:13 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 01:31:14 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <sysexits.h>
 # include <unistd.h>
 
-# define STACK_A true
-# define STACK_B false
+# define STACK_A 1
+# define STACK_B 0
 
 typedef struct s_node
 {
@@ -39,8 +39,6 @@ typedef struct s_stack
 
 void				compaction(t_stack *stack);
 void				partition(t_stack *a, t_stack *b);
-void				print_stack(t_stack *stack);
-void				print_stacks(t_stack *a, t_stack *b);
 
 t_stack				*create_empty_stack(void);
 
@@ -76,10 +74,5 @@ void				rrr(t_stack *a, t_stack *b);
 
 void				sort(t_stack *a, t_stack *b);
 void				sort_small(t_stack *a, t_stack *b, size_t size, bool type);
-
-// to be deleted later on
-void				print_stack(t_stack *stack);
-void				print_stacks_final(t_stack *a, t_stack *b);
-void				print_stack_size(t_stack *stack, size_t size);
 
 #endif
