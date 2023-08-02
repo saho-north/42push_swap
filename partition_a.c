@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 04:20:21 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 11:00:22 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:41:47 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,7 @@ static void	do_rrr(t_stack *a, t_stack *b, size_t count)
 	}
 }
 
-static void	call_next(t_stack *a, t_stack *b, size_t size, size_t max_id)
-{
-	do_rrr(a, b, size / 3);
-	partition_a(a, b, size / 3, max_id);
-	partition_b(a, b, size / 3, max_id - (size / 3) * 2 + 1);
-	partition_b(a, b, size - (size / 3) * 2, max_id + 1 - size);
-}
-
-static void	partition_a_helper(t_stack *a, t_stack *b, size_t size,
-		size_t max_id)
+static void	do_partition(t_stack *a, t_stack *b, size_t size, size_t max_id)
 {
 	size_t	i;
 
@@ -83,7 +74,6 @@ static void	partition_a_helper(t_stack *a, t_stack *b, size_t size,
 		}
 		i++;
 	}
-	call_next(a, b, size, max_id);
 }
 
 void	partition_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
@@ -102,5 +92,9 @@ void	partition_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
 		sort_top_3_a(a);
 		return ;
 	}
-	partition_a_helper(a, b, size, max_id);
+	do_partition(a, b, size, max_id);
+	do_rrr(a, b, size / 3);
+	partition_a(a, b, size / 3, max_id);
+	partition_b(a, b, size / 3, max_id - (size / 3) * 2 + 1);
+	partition_b(a, b, size - (size / 3) * 2, max_id + 1 - size);
 }
