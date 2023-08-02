@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 04:20:21 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 03:50:13 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:51:15 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ static void	partition_for_b(t_stack *a, t_stack *b, size_t size, size_t min_id)
 	size_t	i;
 	size_t	pivot_left;
 	size_t	pivot_right;
-	size_t	small_count;
-	size_t	medium_count;
-	size_t	large_count;
+	size_t	push_count;
 
 	if (size < 3 || b->size <= 3)
 	{
@@ -78,16 +76,13 @@ static void	partition_for_b(t_stack *a, t_stack *b, size_t size, size_t min_id)
 	}
 	pivot_left = min_id + size / 3;
 	pivot_right = min_id + (size / 3) * 2;
-	small_count = 0;
-	medium_count = 0;
-	large_count = 0;
+	push_count = 0;
 	i = 0;
 	while (i < size)
 	{
 		if (b->guard->next->index < pivot_left)
 		{
 			rb(b);
-			small_count++;
 		}
 		else if (b->guard->next->index < pivot_right)
 		{
@@ -95,32 +90,29 @@ static void	partition_for_b(t_stack *a, t_stack *b, size_t size, size_t min_id)
 			if (i + 1 < size && b->guard->next->index < pivot_left)
 			{
 				rr(a, b);
-				medium_count++;
-				small_count++;
 				i++;
 			}
 			else
 			{
 				ra(a);
-				medium_count++;
 			}
 		}
 		else
 		{
 			pa(a, b);
-			large_count++;
+			push_count++;
 		}
 		i++;
 	}
-	partition_for_a(a, b, large_count, pivot_right + large_count - 1);
+	partition_for_a(a, b, push_count, pivot_right + push_count - 1);
 	i = 0;
-	while (i < small_count && i < medium_count)
+	while (i < (size - push_count) / 2)
 	{
 		rrr(a, b);
 		i++;
 	}
-	partition_for_a(a, b, medium_count, pivot_right - 1);
-	partition_for_b(a, b, small_count, min_id);
+	partition_for_a(a, b, (size - push_count) / 2, pivot_right - 1);
+	partition_for_b(a, b, (size - push_count) / 2, min_id);
 }
 
 static void	sort_top_3_a(t_stack *a)
@@ -129,7 +121,7 @@ static void	sort_top_3_a(t_stack *a)
 	size_t	second;
 	size_t	third;
 
-	while (true)
+	while (1)
 	{
 		first = a->guard->next->index;
 		second = a->guard->next->next->index;
@@ -152,9 +144,7 @@ static void	partition_for_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
 	size_t	i;
 	size_t	pivot_left;
 	size_t	pivot_right;
-	size_t	small_count;
-	size_t	medium_count;
-	size_t	large_count;
+	size_t	push_count;
 
 	if (size < 2 || is_sorted(a, size))
 	{
@@ -172,16 +162,13 @@ static void	partition_for_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
 	}
 	pivot_left = max_id - (size / 3) * 2;
 	pivot_right = max_id - size / 3;
-	small_count = 0;
-	medium_count = 0;
-	large_count = 0;
+	push_count = 0;
 	i = 0;
 	while (i < size)
 	{
 		if (a->guard->next->index > pivot_right)
 		{
 			ra(a);
-			large_count++;
 		}
 		else if (a->guard->next->index > pivot_left)
 		{
@@ -189,32 +176,29 @@ static void	partition_for_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
 			if (i + 1 < size && a->guard->next->index > pivot_right)
 			{
 				rr(a, b);
-				large_count++;
-				medium_count++;
 				i++;
 			}
 			else
 			{
 				rb(b);
-				medium_count++;
 			}
 		}
 		else
 		{
 			pb(a, b);
-			small_count++;
+			push_count++;
 		}
 		i++;
 	}
 	i = 0;
-	while (i < large_count && i < medium_count)
+	while (i < (size - push_count) / 2)
 	{
 		rrr(a, b);
 		i++;
 	}
-	partition_for_a(a, b, large_count, max_id);
-	partition_for_b(a, b, medium_count, pivot_left + 1);
-	partition_for_b(a, b, small_count, max_id + 1 - size);
+	partition_for_a(a, b, (size - push_count) / 2, max_id);
+	partition_for_b(a, b, (size - push_count) / 2, pivot_left + 1);
+	partition_for_b(a, b, push_count, max_id + 1 - size);
 }
 
 void	partition(t_stack *a, t_stack *b)
