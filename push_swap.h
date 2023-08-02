@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 08:35:50 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 10:11:44 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct s_stack
 }					t_stack;
 
 void				compaction(t_stack *stack);
-void				partition(t_stack *a, t_stack *b);
+void				partition_a(t_stack *a, t_stack *b, size_t size,
+						size_t max_id);
+void				partition_b(t_stack *a, t_stack *b, size_t size,
+						size_t min_id);
 
 t_stack				*create_empty_stack(void);
 
