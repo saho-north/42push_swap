@@ -6,20 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 22:58:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/07/22 01:42:21 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:54:05 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-ra (rotate a): Shift up all elements of stack a by 1.
-The first element becomes the last one.
-
-rb (rotate b): Shift up all elements of stack b by 1.
-The first element becomes the last one.
-rr : ra and rb at the same time.
- */
 
 static void	rotate(t_stack *stack)
 {

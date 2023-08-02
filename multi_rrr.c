@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   multi_rrr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 12:28:08 by Saho Kitaha       #+#    #+#             */
-/*   Updated: 2023/08/02 14:44:56 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/08/02 13:57:48 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/02 14:48:19 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void	multi_rrr(t_stack *a, t_stack *b, size_t count)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (i < count)
+	{
+		rrr(a, b);
 		i++;
-	return (i);
+	}
 }

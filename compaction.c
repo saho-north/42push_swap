@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:14:52 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 08:25:26 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:42:33 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,21 @@ void	compaction(t_stack *stack)
 {
 	t_node	*node;
 	int		*array;
-	size_t	i;
+	size_t	array_index;
 
 	node = stack->guard->next;
 	array = create_sorted_array(stack);
 	while (node != stack->guard)
 	{
-		i = 0;
-		while (i < stack->size)
+		array_index = 0;
+		while (array_index < stack->size)
 		{
-			if (node->value == array[i])
+			if (node->value == array[array_index])
 			{
-				node->index = i;
+				node->index = array_index;
 				break ;
 			}
-			i++;
+			array_index++;
 		}
 		node = node->next;
 	}

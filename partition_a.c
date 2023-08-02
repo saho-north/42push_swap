@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 04:20:21 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 13:41:47 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:59:03 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,6 @@ static void	sort_top_3_a(t_stack *a)
 			sa(a);
 			rra(a);
 		}
-	}
-}
-
-static void	do_rrr(t_stack *a, t_stack *b, size_t count)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < count)
-	{
-		rrr(a, b);
-		i++;
 	}
 }
 
@@ -93,7 +81,7 @@ void	partition_a(t_stack *a, t_stack *b, size_t size, size_t max_id)
 		return ;
 	}
 	do_partition(a, b, size, max_id);
-	do_rrr(a, b, size / 3);
+	multi_rrr(a, b, size / 3);
 	partition_a(a, b, size / 3, max_id);
 	partition_b(a, b, size / 3, max_id - (size / 3) * 2 + 1);
 	partition_b(a, b, size - (size / 3) * 2, max_id + 1 - size);
