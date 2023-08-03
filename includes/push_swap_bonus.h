@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:57:45 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:31:36 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:55:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ void	pb_bonus(t_stack *a, t_stack *b);
 void	ra_bonus(t_stack *a);
 void	rb_bonus(t_stack *b);
 void	rr_bonus(t_stack *a, t_stack *b);
+void	rra_bonus(t_stack *a);
+void	rrb_bonus(t_stack *b);
+void	rrr_bonus(t_stack *a, t_stack *b);
 
 #endif

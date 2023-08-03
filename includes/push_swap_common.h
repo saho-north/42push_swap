@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:52:13 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:41:21 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:54:34 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_stack
 bool				is_valid_arg(int argc, const char **argv);
 t_stack				*parse_input(int argc, const char **argv);
 t_stack				*create_empty_stack(void);
+bool				is_sorted(t_stack *stack, size_t size);
+bool				is_reverse_sorted(t_stack *stack, size_t size);
 
 size_t				ft_strlen(const char *str);
 int					ft_issign(int c);
