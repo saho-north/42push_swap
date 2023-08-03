@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   is_reverse_sorted.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 14:55:06 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/28 07:55:33 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	sort(t_stack *a, t_stack *b)
+bool	is_reverse_sorted(t_stack *stack, size_t size)
 {
-	size_t	size;
+	t_node	*guard;
+	t_node	*node;
 
-	size = a->size;
-	if (size < 7)
+	guard = stack->guard;
+	node = guard->next;
+	while (node != guard && node->next != guard && size > 1)
 	{
-		sort_small(a, b, size, STACK_A);
+		if (node->value < node->next->value)
+			return (false);
+		node = node->next;
+		size--;
 	}
-	else if (is_reverse_sorted(a, size))
-	{
-		while (a->size > 0)
-		{
-			pb(a, b);
-			rb(b);
-		}
-		while (b->size > 0)
-		{
-			pa(a, b);
-		}
-	}
-	else
-	{
-		compaction(a);
-		partition_a(a, b, a->size, a->size - 1);
-	}
+	return (true);
 }

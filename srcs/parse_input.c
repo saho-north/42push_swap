@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 14:48:51 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	push_node_to_stack(int num, t_stack *stack)
 {

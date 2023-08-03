@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigsig.c                                      :+:      :+:    :+:   */
+/*   multi_rrr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 19:04:56 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 14:44:39 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/08/02 13:57:48 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-int	ft_isdigsig(int c)
+void	multi_rrr(t_stack *a, t_stack *b, size_t count)
 {
-	return (ft_isdigit(c) || ft_issign(c));
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		rrr(a, b);
+		i++;
+	}
 }

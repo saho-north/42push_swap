@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multi_rrr.c                                        :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 13:57:48 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 14:48:19 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/28 07:52:46 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	multi_rrr(t_stack *a, t_stack *b, size_t count)
+bool	is_sorted(t_stack *stack, size_t size)
 {
-	size_t	i;
+	t_node	*guard;
+	t_node	*node;
 
-	i = 0;
-	while (i < count)
+	guard = stack->guard;
+	node = guard->next;
+	while (node != guard && node->next != guard && size > 1)
 	{
-		rrr(a, b);
-		i++;
+		if (node->value > node->next->value)
+			return (false);
+		node = node->next;
+		size--;
 	}
+	return (true);
 }

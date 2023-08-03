@@ -1,24 +1,37 @@
-CC       = cc
-CFLAGS   = -Wall -Wextra -Werror -I.
-DEBUG    = -fsanitize=address -g
-NAME     = push_swap
-SRCS     = $(wildcard *.c)
-OBJS     = $(SRCS:.c=.o)
-INCS     = push_swap.h
+NAME        = push_swap
+BONUS_NAME  = test_checker
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -I./includes
 
-$(NAME): $(OBJS)
+SRCS_PUSH_SWAP = do_rotate.c exit_with_error.c ft_isdigit.c partition_b.c ft_strtol.c is_sorted.c sort_small.c compaction.c ft_strlen.c do_reverse_rotate.c sort.c partition_a.c do_push.c ft_putendl_fd.c is_valid_arg.c parse_input.c ft_issign.c create_empty_stack.c push_swap.c ft_isdigsig.c do_swap.c multi_rrr.c is_reverse_sorted.c
+
+SRCS_COMMON = do_rotate.c exit_with_error.c ft_isdigit.c partition_b.c ft_strtol.c is_sorted.c sort_small.c compaction.c ft_strlen.c do_reverse_rotate.c sort.c partition_a.c do_push.c ft_putendl_fd.c is_valid_arg.c parse_input.c ft_issign.c create_empty_stack.c push_swap.c ft_isdigsig.c do_swap.c multi_rrr.c is_reverse_sorted.c
+
+#今は全てのファイルが列挙されているが、ボーナスcheckerに使用されるファイルのみをコンパイルするようにあとで変更する
+SRCS_CHECKER  = checker.c get_next_line.c get_next_line_utils.c
+
+OBJS_COMMON    = $(addprefix srcs/, $(SRCS_COMMON:.c=.o))
+OBJS_PUSH_SWAP = $(OBJS_COMMON) $(addprefix srcs/, $(SRCS_PUSH_SWAP:.c=.o))
+OBJS_CHECKER   = $(OBJS_COMMON) $(addprefix srcs/, $(SRCS_CHECKER:.c=.o))
+
+$(NAME): $(OBJS_PUSH_SWAP)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(BONUS_NAME): $(OBJS_CHECKER)
 	$(CC) $(CFLAGS) $^ -o $@
 
 all: $(NAME)
 
-%.o: %.c $(INCS)
+bonus: $(BONUS_NAME)
+
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS_PUSH_SWAP) $(OBJS_CHECKER)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
@@ -44,4 +57,4 @@ error4: $(NAME)
 error5: $(NAME)
 	./$(NAME) "1 2 3-"
 
-.PHONY: all clean fclean re test error0 error1 error2 error3 error4 error5
+.PHONY: all clean fclean re test error0 error1 error2 error3 error4 error5 bonus

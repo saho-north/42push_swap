@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 15:04:22 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/02 14:53:39 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/05/29 23:32:34 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/03 23:51:52 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 int	main(int argc, const char **argv)
 {
+	char	*line;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	line = NULL;
+	while (true)
+	{
+		line = get_next_line(0);
+		printf("line: %s", line);
+		if (!line)
+		{
+			printf("End of stdin\n");
+			break ;
+		}
+		free(line);
+		line = NULL;
+	}
 	if (argc == 1)
 		return (0);
 	if (!is_valid_arg(--argc, ++argv))
@@ -37,8 +51,3 @@ int	main(int argc, const char **argv)
 	free_stack(stack_b);
 	return (0);
 }
-
-// __attribute__((destructor)) static void destructor()
-// {
-// 	system("leaks -q push_swap");
-// }
