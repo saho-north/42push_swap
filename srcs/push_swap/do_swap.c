@@ -6,24 +6,27 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:39:40 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sa(t_stack *a) {
-  swap(a);
-  ft_putendl_fd("sa", 1);
+void	sa(t_stack *a)
+{
+	swap(a);
+	ft_putendl_fd("sa", 1);
 }
 
-void	sb(t_stack *b) {
-  swap(b);
-  ft_putendl_fd("sb", 1);
+void	sb(t_stack *b)
+{
+	swap(b);
+	ft_putendl_fd("sb", 1);
 }
 
-void	ss(t_stack *a, t_stack *b) {
-  swap(a);
-  swap(b);
-  ft_putendl_fd("ss", 1);
+void	ss(t_stack *a, t_stack *b)
+{
+	swap(a);
+	swap(b);
+	ft_putendl_fd("ss", 1);
 }
