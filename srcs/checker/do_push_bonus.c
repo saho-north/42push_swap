@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_swap.c                                          :+:      :+:    :+:   */
+/*   do_push_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:25:56 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 21:28:36 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap_bonus.h"
 
-void	sa(t_stack *a)
+void	pa_bonus(t_stack *a, t_stack *b)
 {
-	swap(a);
-	ft_putendl_fd("sa", 1);
+	push(b, a);
 }
 
-void	sb(t_stack *b)
+void	pb_bonus(t_stack *a, t_stack *b)
 {
-	swap(b);
-	ft_putendl_fd("sb", 1);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	ft_putendl_fd("ss", 1);
+	push(a, b);
 }

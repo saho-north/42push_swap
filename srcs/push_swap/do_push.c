@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_rotate_bonus.c                                  :+:      :+:    :+:   */
+/*   do_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 22:58:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:30:30 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 21:28:36 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap_bonus.h"
+#include "../../includes/push_swap.h"
 
-void	ra_bonus(t_stack *a)
+void	pa(t_stack *a, t_stack *b)
 {
-	rotate(a);
+	push(b, a);
+	ft_putendl_fd("pa", 1);
 }
 
-void	rb_bonus(t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-	rotate(b);
-}
-
-void	rr_bonus(t_stack *a, t_stack *b)
-{
-	rotate(a);
-	rotate(b);
+	push(a, b);
+	ft_putendl_fd("pb", 1);
 }

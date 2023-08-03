@@ -50,7 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-push_swap
 .vscode
 libft-tester-tokyo
 dump/
@@ -63,7 +62,6 @@ test
 test.c
 out
 test*.c
-checker
 bin.c
 test/
 *.sh

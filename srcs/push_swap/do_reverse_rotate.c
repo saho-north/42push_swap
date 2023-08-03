@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_reverse_rotate_bonus.c                          :+:      :+:    :+:   */
+/*   do_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:55:33 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap_bonus.h"
+#include "../../includes/push_swap.h"
 
-void	rra_bonus(t_stack *a)
+void	rra(t_stack *a)
 {
 	reverse_rotate(a);
+	ft_putendl_fd("rra", 1);
 }
 
-void	rrb_bonus(t_stack *b)
+void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
+	ft_putendl_fd("rrb", 1);
 }
 
-void	rrr_bonus(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
+	ft_putendl_fd("rrr", 1);
+}
+
+void	multi_rrr(t_stack *a, t_stack *b, size_t count)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		rrr(a, b);
+		i++;
+	}
 }

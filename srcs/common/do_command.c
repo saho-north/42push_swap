@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 03:18:18 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:42:15 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap_common.h"
+#include "../../includes/push_swap_common.h"
 
 void	swap(t_stack *stack)
 {

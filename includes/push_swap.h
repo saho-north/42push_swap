@@ -6,14 +6,14 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:45:58 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:31:39 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../includes/push_swap_common.h"
+# include "push_swap_common.h"
 
 void	compaction(t_stack *stack);
 

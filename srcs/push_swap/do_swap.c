@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_rotate.c                                        :+:      :+:    :+:   */
+/*   do_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 22:58:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:42:32 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	ra(t_stack *a)
-{
-	rotate(a);
-	ft_putendl_fd("ra", 1);
+void	sa(t_stack *a) {
+  swap(a);
+  ft_putendl_fd("sa", 1);
 }
 
-void	rb(t_stack *b)
-{
-	rotate(b);
-	ft_putendl_fd("rb", 1);
+void	sb(t_stack *b) {
+  swap(b);
+  ft_putendl_fd("sb", 1);
 }
 
-void	rr(t_stack *a, t_stack *b)
-{
-	rotate(a);
-	rotate(b);
-	ft_putendl_fd("rr", 1);
+void	ss(t_stack *a, t_stack *b) {
+  swap(a);
+  swap(b);
+  ft_putendl_fd("ss", 1);
 }

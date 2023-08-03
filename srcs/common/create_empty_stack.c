@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:46:06 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 01:17:20 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:30:11 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap_common.h"
+#include "../../includes/push_swap_common.h"
 
 static t_node	*create_guard(void)
 {

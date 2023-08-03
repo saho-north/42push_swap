@@ -3,15 +3,15 @@ BONUS_NAME     = test_checker
 CC             = cc
 CFLAGS         = -Wall -Wextra -Werror -I./includes
 
-SRCS_PUSH_SWAP = partition_b.c sort_small.c compaction.c sort.c partition_a.c push_swap.c do_swap.c do_push.c do_rotate.c do_reverse_rotate.c
+SRCS_PUSH_SWAP = push_swap.c do_swap.c do_push.c do_rotate.c do_reverse_rotate.c sort.c sort_small.c compaction.c partition_a.c partition_b.c
 
 SRCS_COMMON = is_valid_arg.c parse_input.c create_empty_stack.c push_swap_utils.c exit_with_error.c ft_strtol.c do_command.c is_sorted_utils.c
 
 SRCS_CHECKER  = checker_bonus.c checker_gnl_bonus.c checker_utils_bonus.c do_swap_bonus.c do_push_bonus.c do_rotate_bonus.c do_reverse_rotate_bonus.c
 
-OBJS_COMMON    = $(addprefix srcs/, $(SRCS_COMMON:.c=.o))
-OBJS_PUSH_SWAP = $(OBJS_COMMON) $(addprefix srcs/, $(SRCS_PUSH_SWAP:.c=.o))
-OBJS_CHECKER   = $(OBJS_COMMON) $(addprefix srcs/, $(SRCS_CHECKER:.c=.o))
+OBJS_COMMON    = $(addprefix srcs/common/, $(SRCS_COMMON:.c=.o))
+OBJS_PUSH_SWAP = $(OBJS_COMMON) $(addprefix srcs/push_swap/, $(SRCS_PUSH_SWAP:.c=.o))
+OBJS_CHECKER   = $(OBJS_COMMON) $(addprefix srcs/checker/, $(SRCS_CHECKER:.c=.o))
 
 $(NAME): $(OBJS_PUSH_SWAP)
 	$(CC) $(CFLAGS) $^ -o $@

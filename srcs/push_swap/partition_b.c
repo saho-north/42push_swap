@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 04:20:21 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	push_sorted_nodes(t_stack *a, t_stack *b, size_t size)
 {
