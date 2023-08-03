@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   do_swap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 03:42:11 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/12 17:06:42 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/04 03:20:28 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
-void	rra(t_stack *a)
+void	sa_bonus(t_stack *a)
 {
-	reverse_rotate(a);
-	ft_putendl_fd("rra", 1);
+	swap(a);
 }
 
-void	rrb(t_stack *b)
+void	sb_bonus(t_stack *b)
 {
-	reverse_rotate(b);
-	ft_putendl_fd("rrb", 1);
+	swap(b);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	ss_bonus(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
-	ft_putendl_fd("rrr", 1);
-}
-
-void	multi_rrr(t_stack *a, t_stack *b, size_t count)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < count)
-	{
-		rrr(a, b);
-		i++;
-	}
+	swap(a);
+	swap(b);
 }

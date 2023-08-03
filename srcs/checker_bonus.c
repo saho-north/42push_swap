@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:32:34 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 02:18:45 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:15:42 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 static bool	is_valid_command(char *line)
 {
-	if (line)
+	if (!ft_strncmp(line, "sa\n", 4) || !ft_strncmp(line, "sb\n", 4)
+		|| !ft_strncmp(line, "ss\n", 4))
 		return (true);
-	return (false);
+	else if (!ft_strncmp(line, "pa\n", 4) || !ft_strncmp(line, "pb\n", 4))
+		return (true);
+	else if (!ft_strncmp(line, "ra\n", 4) || !ft_strncmp(line, "rb\n", 4)
+			|| !ft_strncmp(line, "rr\n", 4))
+		return (true);
+	else if (!ft_strncmp(line, "rra\n", 5) || !ft_strncmp(line, "rrb\n", 5)
+			|| !ft_strncmp(line, "rrr\n", 5))
+		return (true);
+	else
+		return (false);
 }
 
 static void	read_command_and_sort(t_stack *a, t_stack *b)
@@ -34,7 +44,7 @@ static void	read_command_and_sort(t_stack *a, t_stack *b)
 			free(line);
 			free_stacks_with_print_error(a, b);
 		}
-		//execute_command(a, b, line);
+		execute_command(a, b, line);
 		free(line);
 		line = NULL;
 	}

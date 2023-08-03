@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:57:45 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 02:20:27 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:31:36 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*get_next_line(int fd);
+
+void	sa_bonus(t_stack *a);
+void	sb_bonus(t_stack *b);
+void	ss_bonus(t_stack *a, t_stack *b);
+void	pa_bonus(t_stack *a, t_stack *b);
+void	pb_bonus(t_stack *a, t_stack *b);
+void	ra_bonus(t_stack *a);
+void	rb_bonus(t_stack *b);
+void	rr_bonus(t_stack *a, t_stack *b);
 
 #endif

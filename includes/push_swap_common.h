@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:52:13 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 01:22:34 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:41:21 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,16 @@ int					ft_isdigsig(int c);
 void				ft_putendl_fd(char *s, int fd);
 long				ft_strtol(const char *str, const char **endpos);
 
+//exit_with_error.c
 void				exit_with_print_error(void);
 void				free_stack(t_stack *stack);
 void				free_stack_with_print_error(t_stack *stack);
 void				free_stacks_with_print_error(t_stack *a, t_stack *b);
+
+//do_commanc.c
+void				swap(t_stack *stack);
+void				push(t_stack *stack_from, t_stack *stack_to);
+void				rotate(t_stack *stack);
+void				reverse_rotate(t_stack *stack);
 
 #endif

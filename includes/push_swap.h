@@ -6,20 +6,19 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 01:22:37 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 03:41:28 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "push_swap_common.h"
+# include "../includes/push_swap_common.h"
 
 void	compaction(t_stack *stack);
 
 bool	is_reverse_sorted(t_stack *stack, size_t size);
 bool	is_sorted(t_stack *stack, size_t size);
-void	multi_rrr(t_stack *a, t_stack *b, size_t count);
 void	partition_a(t_stack *a, t_stack *b, size_t size, size_t max_id);
 void	partition_b(t_stack *a, t_stack *b, size_t size, size_t min_id);
 
@@ -34,6 +33,7 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+void	multi_rrr(t_stack *a, t_stack *b, size_t count);
 void	sort_small(t_stack *a, t_stack *b, size_t size, bool type);
 void	sort(t_stack *a, t_stack *b);
 
