@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_empty_stack.c                               :+:      :+:    :+:   */
+/*   create_empty_stack_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:46:06 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:30:11 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 08:06:00 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap_common.h"
+#include "../../includes/push_swap_bonus.h"
 
 static t_node	*create_guard(void)
 {

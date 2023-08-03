@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_command.c                                       :+:      :+:    :+:   */
+/*   do_command_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 03:18:18 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 08:05:58 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap_common.h"
+#include "../../includes/push_swap_bonus.h"
 
 void	swap(t_stack *stack)
 {

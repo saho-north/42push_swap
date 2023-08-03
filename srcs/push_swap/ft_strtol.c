@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 20:06:49 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:30:09 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 08:06:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap_common.h"
+#include "../../includes/push_swap.h"
 
 static long	convert_num(const char *str, const char **endpos, bool is_negative)
 {
