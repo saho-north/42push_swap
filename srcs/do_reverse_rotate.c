@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/03 23:52:09 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/04 01:26:50 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,16 @@ void	rrr(t_stack *a, t_stack *b)
 	reverse_rotate(a);
 	reverse_rotate(b);
 	ft_putendl_fd("rrr", 1);
+}
+
+void	multi_rrr(t_stack *a, t_stack *b, size_t count)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		rrr(a, b);
+		i++;
+	}
 }
