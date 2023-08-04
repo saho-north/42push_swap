@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:06:36 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:40:22 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/05 00:37:52 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap_bonus.h"
+#include "../../includes/checker_bonus.h"
 
 static char	*extract_next_line(char **buffered_text)
 {

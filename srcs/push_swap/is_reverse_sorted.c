@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_empty_stack.c                               :+:      :+:    :+:   */
+/*   is_reverse_sorted.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 15:46:06 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 08:06:16 by sakitaha         ###   ########.fr       */
+/*   Created: 2023/07/28 07:52:46 by sakitaha          #+#    #+#             */
+/*   Updated: 2023/08/05 02:17:36 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static t_node	*create_guard(void)
+bool	is_reverse_sorted(t_stack *stack, size_t size)
 {
 	t_node	*guard;
+	t_node	*node;
 
-	guard = (t_node *)malloc(sizeof(t_node));
-	if (!guard)
-		return (NULL);
-	guard->next = guard;
-	guard->prev = guard;
-	guard->value = 0;
-	return (guard);
-}
-
-t_stack	*create_empty_stack(void)
-{
-	t_stack	*stack;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		exit_with_print_error();
-	stack->guard = create_guard();
-	if (!stack->guard)
+	guard = stack->guard;
+	node = guard->next;
+	while (node != guard && node->next != guard && size > 1)
 	{
-		free(stack);
-		exit_with_print_error();
+		if (node->value < node->next->value)
+			return (false);
+		node = node->next;
+		size--;
 	}
-	stack->size = 0;
-	return (stack);
+	return (true);
 }

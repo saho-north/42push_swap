@@ -6,33 +6,36 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 08:06:59 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/05 01:49:38 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/push_swap_common.h"
 
-bool	is_valid_arg(int argc, const char **argv) {
-  const char *str;
+bool	is_valid_arg(int argc, const char **argv)
+{
+	const char	*str;
 
-  while (argc--) {
-    str = *argv;
-    if (!ft_strlen(str))
-      return (false);
-    while (*str) {
-      if (ft_issign(*str))
-        str++;
-      if (!ft_isdigit(*str))
-        return (false);
-      while (ft_isdigit(*str))
-        str++;
-      if (!*str)
-        break ;
-      if (*str != ' ' || !ft_isdigsig(*(str + 1)))
-        return (false);
-      str++;
-    }
-    argv++;
-  }
-  return (true);
+	while (argc--)
+	{
+		str = *argv;
+		if (!ft_strlen(str))
+			return (false);
+		while (*str)
+		{
+			if (ft_issign(*str))
+				str++;
+			if (!ft_isdigit(*str))
+				return (false);
+			while (ft_isdigit(*str))
+				str++;
+			if (!*str)
+				break ;
+			if (*str != ' ' || !ft_isdigsig(*(str + 1)))
+				return (false);
+			str++;
+		}
+		argv++;
+	}
+	return (true);
 }

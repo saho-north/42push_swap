@@ -6,32 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 22:58:28 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 08:09:30 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/05 02:17:32 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-static void	rotate(t_stack *stack)
-{
-	t_node	*guard;
-	t_node	*first_node;
-	t_node	*second_node;
-	t_node	*last_node;
-
-	guard = stack->guard;
-	if (guard->next == guard->prev)
-		return ;
-	first_node = guard->next;
-	second_node = first_node->next;
-	last_node = guard->prev;
-	guard->next = second_node;
-	guard->prev = first_node;
-	first_node->next = guard;
-	first_node->prev = last_node;
-	last_node->next = first_node;
-	second_node->prev = guard;
-}
 
 void	ra(t_stack *a)
 {

@@ -6,11 +6,11 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:20:44 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 04:40:14 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/05 02:04:16 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap_bonus.h"
+#include "../../includes/checker_bonus.h"
 
 void	rra_bonus(t_stack *a)
 {
