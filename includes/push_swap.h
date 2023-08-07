@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:07:15 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/07 17:27:56 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/08 04:00:21 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 bool	is_reverse_sorted(t_stack *stack, size_t size);
 void	sort(t_stack *a, t_stack *b);
 void	sort_small(t_stack *a, t_stack *b, size_t size, bool type);
+void	partition(t_stack *a, t_stack *b);
 void	partition_a(t_stack *a, t_stack *b, size_t size, size_t max_id);
 void	partition_b(t_stack *a, t_stack *b, size_t size, size_t min_id);
 void	sa(t_stack *a);

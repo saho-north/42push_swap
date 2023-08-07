@@ -6,12 +6,12 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:57:45 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/07 17:28:24 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/08 03:42:22 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_BONUS_H
-# define PUSH_SWAP_BONUS_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "push_swap_common.h"
 

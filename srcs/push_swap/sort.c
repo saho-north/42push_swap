@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:52:33 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/05 02:18:04 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/08 04:17:42 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	sort(t_stack *a, t_stack *b)
 	else
 	{
 		compaction(a);
-		partition_a(a, b, a->size, a->size - 1);
+		partition(a, b);
 	}
 }
