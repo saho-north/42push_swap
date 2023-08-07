@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:57:45 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/05 02:08:58 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:28:24 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@
 #  define BUFFER_SIZE 32
 # endif
 
-char	*ft_strchr(const char *s, int c);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
 char	*get_next_line(int fd);
-
 void	sa_bonus(t_stack *a);
 void	sb_bonus(t_stack *b);
 void	ss_bonus(t_stack *a, t_stack *b);
