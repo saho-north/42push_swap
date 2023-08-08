@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/09 04:07:37 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/09 04:34:59 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,43 +54,32 @@ static void	sort_three_a(t_stack *a)
 		sa(a);
 }
 
-// static int	get_min_value(t_stack *stack)
-// {
-// 	t_node	*node;
-// 	int		min;
-
-// 	node = stack->guard->next;
-// 	min = node->value;
-// 	while (node != stack->guard)
-// 	{
-// 		if (min > node->value)
-// 			min = node->value;
-// 		node = node->next;
-// 	}
-// 	return (min);
-// }
-
 static void	sort_four_five_six(t_stack *a, t_stack *b)
 {
-	t_node	*guard_a;
-	int		min;
+	t_node	*guard;
+	size_t	to_move;
 
-	guard_a = a->guard;
-	while (a->size != 3)
+	guard = a->guard;
+	to_move = a->size - 3;
+	compaction(a);
+	while (a->size > 3)
 	{
-		compaction(a);
-		if (guard_a->next->value == min)
+		if (guard->next->index < to_move)
 			pb(a, b);
-		else if (guard_a->prev->value == min)
-			rra(a);
-		else if (guard_a->prev->prev->value == min)
+		else if (guard->next->next->index < to_move)
+			ra(a);
+		else if (guard->prev->index < to_move)
 			rra(a);
 		else
 			ra(a);
 	}
-	sort_three_a(a);
+	sort_small(a, b, 3, STACK_A);
 	while (b->size > 0)
+	{
 		pa(a, b);
+		if (guard->next->value > guard->next->next->value)
+			sa(a);
+	}
 }
 
 void	sort_small(t_stack *a, t_stack *b, size_t size, bool type)
