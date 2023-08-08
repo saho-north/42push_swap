@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 01:26:27 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/05 02:18:01 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/09 04:07:37 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,21 @@ static void	sort_three_a(t_stack *a)
 		sa(a);
 }
 
-static int	get_min_value(t_stack *stack)
-{
-	t_node	*node;
-	int		min;
+// static int	get_min_value(t_stack *stack)
+// {
+// 	t_node	*node;
+// 	int		min;
 
-	node = stack->guard->next;
-	min = node->value;
-	while (node != stack->guard)
-	{
-		if (min > node->value)
-			min = node->value;
-		node = node->next;
-	}
-	return (min);
-}
+// 	node = stack->guard->next;
+// 	min = node->value;
+// 	while (node != stack->guard)
+// 	{
+// 		if (min > node->value)
+// 			min = node->value;
+// 		node = node->next;
+// 	}
+// 	return (min);
+// }
 
 static void	sort_four_five_six(t_stack *a, t_stack *b)
 {
@@ -78,7 +78,7 @@ static void	sort_four_five_six(t_stack *a, t_stack *b)
 	guard_a = a->guard;
 	while (a->size != 3)
 	{
-		min = get_min_value(a);
+		compaction(a);
 		if (guard_a->next->value == min)
 			pb(a, b);
 		else if (guard_a->prev->value == min)

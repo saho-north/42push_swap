@@ -20,7 +20,7 @@ SRCS_DIR_PUSH_SWAP = $(SRCS_DIR)/push_swap/
 SRCS_DIR_CHECKER = $(SRCS_DIR)/checker/
 
 SRCS_COMMON    = create_empty_stack.c do_command.c exit_with_error.c ft_strtol.c is_sorted.c is_valid_arg.c parse_input.c push_swap_utils.c
-SRCS_PUSH_SWAP = do_push.c do_reverse_rotate.c do_rotate.c do_swap.c is_reverse_sorted.c partition_a.c partition_b.c sort.c sort_small.c push_swap.c
+SRCS_PUSH_SWAP = compaction.c do_push.c do_reverse_rotate.c do_rotate.c do_swap.c is_reverse_sorted.c partition_a.c partition_b.c sort.c sort_small.c push_swap.c
 SRCS_CHECKER  = checker_bonus.c checker_gnl_bonus.c do_push_bonus.c do_swap_bonus.c do_rotate_bonus.c do_reverse_rotate_bonus.c
 
 OBJS_COMMON    = $(addprefix $(SRCS_DIR_COMMON), $(SRCS_COMMON:.c=.o))
