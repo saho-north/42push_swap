@@ -6,11 +6,25 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/05 01:49:38 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/10 00:00:58 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap_common.h"
+
+static bool	is_valid_next(int argc, const char **argv, const char *str)
+{
+	const char	*next_str;
+
+	if (ft_isdigsig(*str))
+		return (true);
+	if (*str && !ft_isdigsig(*str))
+		return (false);
+	if (!argc)
+		return (false);
+	next_str = *argv;
+	return (ft_isdigsig(*next_str));
+}
 
 bool	is_valid_arg(int argc, const char **argv)
 {
@@ -31,7 +45,7 @@ bool	is_valid_arg(int argc, const char **argv)
 				str++;
 			if (!*str)
 				break ;
-			if (*str != ' ' || !ft_isdigsig(*(str + 1)))
+			if (*str != ' ' || !is_valid_next(argc, argv + 1, str + 1))
 				return (false);
 			str++;
 		}
