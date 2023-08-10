@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:21:12 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/05 01:52:54 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:33:06 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_stack	*parse_input(int argc, const char **argv)
 			check_if_duplicate((int)num, stack);
 			push_node_to_stack((int)num, stack);
 			str = endpos;
+			while (ft_isspace(*str))
+				str++;
 		}
 		argv++;
 	}

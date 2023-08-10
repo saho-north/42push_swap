@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 20:06:49 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/04 22:50:07 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:32:25 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ long	ft_strtol(const char *str, const char **endpos)
 	bool	is_negative;
 
 	is_negative = false;
-	while (*str == ' ' || ('\t' <= *str && *str <= '\r'))
+	while (ft_isspace(*str))
 		str++;
 	if (*str == '+' || *str == '-')
 	{

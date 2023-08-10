@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 22:37:55 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/07 17:27:57 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:28:03 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ bool				is_valid_arg(int argc, const char **argv);
 long				ft_strtol(const char *str, const char **endpos);
 int					ft_issign(int c);
 int					ft_isdigsig(int c);
+int					ft_isspace(int c);
 
 #endif

@@ -6,34 +6,31 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/10 22:47:22 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:27:40 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap_common.h"
 
-static int	ft_isspace(int c)
+static bool	is_valid_arg_end(const char *current_str, const char *next_str)
 {
-	return (c == ' ' || ('\t' <= c && c <= '\r'));
-}
+	size_t	current_str_len;
 
-static bool	is_valid_arg_end(int i, int argc, const char **argv,
-		const char *str)
-{
-	const char	*next_str;
-
-	if (ft_isdigsig(*str))
+	current_str_len = ft_strlen(current_str);
+	if (ft_isdigit(current_str[current_str_len - 1]))
 		return (true);
-	if (*str && !ft_isdigsig(*str))
-		return (false);
-	if (!argc)
-		return (false);
-	next_str = *argv;
-	return (ft_isdigsig(*next_str));
+	if (ft_isspace(current_str[current_str_len - 1]) && next_str)
+	{
+		if (ft_isdigsig(*next_str))
+			return (true);
+	}
+	return (false);
 }
 
-static bool	is_valid_str(const char *str)
+static bool	is_valid_current_str(const char *str)
 {
+	if (ft_isspace(*str))
+		str++;
 	while (*str)
 	{
 		if (ft_issign(*str))
@@ -55,34 +52,42 @@ static bool	is_valid_arg_start(int arg_index, const char **argv)
 {
 	const char	*current_str;
 	const char	*prev_str;
+	size_t		current_str_len;
 
 	current_str = argv[arg_index];
-	if (!ft_strlen(current_str))
+	current_str_len = ft_strlen(current_str);
+	if (!current_str_len)
 		return (false);
 	if (ft_isdigsig(*current_str))
 		return (true);
-	if (!arg_index)
-		return (false);
-	prev_str = argv[arg_index - 1];
-	if (!ft_isdigit(prev_str[ft_strlen(prev_str) - 1]))
-		return (false);
-	return (true);
+	if (ft_isspace(*current_str) && current_str_len > 1 && arg_index > 0)
+	{
+		if (!ft_isdigsig(*(current_str + 1)))
+			return (false);
+		prev_str = argv[arg_index - 1];
+		if (ft_isdigit(prev_str[ft_strlen(prev_str) - 1]))
+			return (true);
+	}
+	return (false);
 }
 
 bool	is_valid_arg(int argc, const char **argv)
 {
-	int	arg_index;
+	const char	*next_str;
+	int			arg_index;
 
 	arg_index = 0;
 	while (arg_index < argc)
 	{
 		if (!is_valid_arg_start(arg_index, argv))
 			return (false);
-		if (!is_valid_str(argv[arg_index]))
+		if (!is_valid_current_str(argv[arg_index]))
 			return (false);
-		//終端がスペースだった場合に、次の正しい引数がないときにfalseを返す
-		if (argv[arg_index][0] != ' ' || !is_valid_arg_end(arg_index, argc,
-				argv, argv[arg_index][1]))
+		if (arg_index + 1 < argc)
+			next_str = argv[arg_index + 1];
+		else
+			next_str = NULL;
+		if (!is_valid_arg_end(argv[arg_index], next_str))
 			return (false);
 		arg_index++;
 	}
