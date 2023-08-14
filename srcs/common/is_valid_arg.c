@@ -6,7 +6,7 @@
 /*   By: sakitaha <sakitaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:55:53 by sakitaha          #+#    #+#             */
-/*   Updated: 2023/08/11 01:27:40 by sakitaha         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:52:00 by sakitaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ static bool	is_valid_arg_end(const char *current_str, const char *next_str)
 	return (false);
 }
 
+static bool	has_valid_numbers_after_sign(const char *str)
+{
+	while (*str >= '0' && *str <= '9')
+	{
+		if (*str >= '1' && *str <= '9')
+		{
+			return (true);
+		}
+		str++;
+	}
+	return (false);
+}
+
 static bool	is_valid_current_str(const char *str)
 {
 	if (ft_isspace(*str))
@@ -34,7 +47,11 @@ static bool	is_valid_current_str(const char *str)
 	while (*str)
 	{
 		if (ft_issign(*str))
+		{
 			str++;
+			if (!has_valid_numbers_after_sign(str))
+				return (false);
+		}
 		if (!ft_isdigit(*str))
 			return (false);
 		while (ft_isdigit(*str))
